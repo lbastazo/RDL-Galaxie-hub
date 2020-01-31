@@ -1,0 +1,10 @@
+{
+  "rdlgalaxieApp": {
+    "OrderStatus": {
+      "null": "",
+      "COMPLETED": "COMPLETED",
+      "PENDING": "PENDING",
+      "CANCELLED": "CANCELLED"
+    }
+  }
+}

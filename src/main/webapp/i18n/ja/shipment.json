@@ -1,0 +1,25 @@
+{
+  "rdlgalaxieApp": {
+    "shipment": {
+      "home": {
+        "title": "Shipments",
+        "createLabel": "Shipment を追加",
+        "createOrEditLabel": "Shipmentを追加または編集",
+        "notFound": "No Shipments found"
+      },
+      "created": "A new Shipment is created with identifier {{ param }}",
+      "updated": "A Shipment is updated with identifier {{ param }}",
+      "deleted": "A Shipment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Shipment {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Shipment"
+      },
+      "trackingCode": "Tracking Code",
+      "date": "Date",
+      "details": "Details",
+      "invoice": "Invoice"
+    }
+  }
+}
