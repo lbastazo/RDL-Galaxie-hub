@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "fr.inti.rdlgalaxie",
+      "nativeLanguage": "fr"
+    },
+    "jhipsterVersion": "6.6.0",
+    "applicationType": "monolith",
+    "baseName": "rdlgalaxie",
+    "packageName": "fr.inti.rdlgalaxie",
+    "packageFolder": "fr/inti/rdlgalaxie",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": false,
+    "websocket": "spring-websocket",
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "MjQxMDZhNDY3YzUyOGRlYzM2OWY3ZTk5YjU3Y2QyNTkwYTI1OTkxZWI3NGI5NGEzMGQyMzM4ODM0OTI1NjQ0YTBhYTliNWE2NDUwOTg3OGI5ZTdlYjllODMzYjllYWIzYWVlYTI4YWMyMWJlMGJkM2IwMjFkZjNhZDU1YjA2NWU=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1579272275743,
+    "testFrameworks": ["protractor"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "fr",
+    "languages": ["fr", "ca", "zh-cn", "zh-tw", "en", "de", "ja", "ko", "pt-pt", "es", "vi"],
+    "blueprints": []
+  }
+}
