@@ -118,7 +118,7 @@ public class ProductOrderResourceIT {
 
         // Create the ProductOrder
         restProductOrderMockMvc.perform(post("/api/product-orders")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(productOrder)))
             .andExpect(status().isCreated());
 
@@ -140,7 +140,7 @@ public class ProductOrderResourceIT {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restProductOrderMockMvc.perform(post("/api/product-orders")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(productOrder)))
             .andExpect(status().isBadRequest());
 
@@ -159,7 +159,7 @@ public class ProductOrderResourceIT {
         // Create the ProductOrder, which fails.
 
         restProductOrderMockMvc.perform(post("/api/product-orders")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(productOrder)))
             .andExpect(status().isBadRequest());
 
@@ -176,7 +176,7 @@ public class ProductOrderResourceIT {
         // Create the ProductOrder, which fails.
 
         restProductOrderMockMvc.perform(post("/api/product-orders")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(productOrder)))
             .andExpect(status().isBadRequest());
 
@@ -193,7 +193,7 @@ public class ProductOrderResourceIT {
         // Create the ProductOrder, which fails.
 
         restProductOrderMockMvc.perform(post("/api/product-orders")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(productOrder)))
             .andExpect(status().isBadRequest());
 
@@ -209,7 +209,7 @@ public class ProductOrderResourceIT {
         // Get all the productOrderList
         restProductOrderMockMvc.perform(get("/api/product-orders?sort=id,desc"))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(productOrder.getId())))
             .andExpect(jsonPath("$.[*].placedDate").value(hasItem(DEFAULT_PLACED_DATE.toString())))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
@@ -224,7 +224,7 @@ public class ProductOrderResourceIT {
         // Get the productOrder
         restProductOrderMockMvc.perform(get("/api/product-orders/{id}", productOrder.getId()))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(productOrder.getId()))
             .andExpect(jsonPath("$.placedDate").value(DEFAULT_PLACED_DATE.toString()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
@@ -253,7 +253,7 @@ public class ProductOrderResourceIT {
             .code(UPDATED_CODE);
 
         restProductOrderMockMvc.perform(put("/api/product-orders")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(updatedProductOrder)))
             .andExpect(status().isOk());
 
@@ -274,7 +274,7 @@ public class ProductOrderResourceIT {
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restProductOrderMockMvc.perform(put("/api/product-orders")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(productOrder)))
             .andExpect(status().isBadRequest());
 
@@ -292,7 +292,7 @@ public class ProductOrderResourceIT {
 
         // Delete the productOrder
         restProductOrderMockMvc.perform(delete("/api/product-orders/{id}", productOrder.getId())
-            .accept(TestUtil.APPLICATION_JSON_UTF8))
+            .accept(TestUtil.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item

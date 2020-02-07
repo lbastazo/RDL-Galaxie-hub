@@ -4,6 +4,8 @@ export class InvoiceComponentsPage {
   createButton = element(by.id('jh-create-entity'));
   deleteButtons = element.all(by.css('jhi-invoice div table .btn-danger'));
   title = element.all(by.css('jhi-invoice div h2#page-heading span')).first();
+  noResult = element(by.id('no-result'));
+  entities = element(by.id('entities'));
 
   async clickOnCreateButton(): Promise<void> {
     await this.createButton.click();
@@ -26,12 +28,14 @@ export class InvoiceUpdatePage {
   pageTitle = element(by.id('jhi-invoice-heading'));
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
+
   dateInput = element(by.id('field_date'));
   detailsInput = element(by.id('field_details'));
   statusSelect = element(by.id('field_status'));
   paymentMethodSelect = element(by.id('field_paymentMethod'));
   paymentDateInput = element(by.id('field_paymentDate'));
   paymentAmountInput = element(by.id('field_paymentAmount'));
+
   orderSelect = element(by.id('field_order'));
 
   async getPageTitle(): Promise<string> {

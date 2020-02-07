@@ -4,7 +4,6 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
@@ -19,7 +18,6 @@ import { InvoiceService } from 'app/entities/invoice/invoice.service';
 })
 export class ShipmentUpdateComponent implements OnInit {
   isSaving = false;
-
   invoices: IInvoice[] = [];
 
   editForm = this.fb.group({
@@ -39,16 +37,14 @@ export class ShipmentUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ shipment }) => {
+      if (!shipment.id) {
+        const today = moment().startOf('day');
+        shipment.date = today;
+      }
+
       this.updateForm(shipment);
 
-      this.invoiceService
-        .query()
-        .pipe(
-          map((res: HttpResponse<IInvoice[]>) => {
-            return res.body ? res.body : [];
-          })
-        )
-        .subscribe((resBody: IInvoice[]) => (this.invoices = resBody));
+      this.invoiceService.query().subscribe((res: HttpResponse<IInvoice[]>) => (this.invoices = res.body || []));
     });
   }
 
@@ -56,7 +52,7 @@ export class ShipmentUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: shipment.id,
       trackingCode: shipment.trackingCode,
-      date: shipment.date != null ? shipment.date.format(DATE_TIME_FORMAT) : null,
+      date: shipment.date ? shipment.date.format(DATE_TIME_FORMAT) : null,
       details: shipment.details,
       invoice: shipment.invoice
     });
@@ -81,7 +77,7 @@ export class ShipmentUpdateComponent implements OnInit {
       ...new Shipment(),
       id: this.editForm.get(['id'])!.value,
       trackingCode: this.editForm.get(['trackingCode'])!.value,
-      date: this.editForm.get(['date'])!.value != null ? moment(this.editForm.get(['date'])!.value, DATE_TIME_FORMAT) : undefined,
+      date: this.editForm.get(['date'])!.value ? moment(this.editForm.get(['date'])!.value, DATE_TIME_FORMAT) : undefined,
       details: this.editForm.get(['details'])!.value,
       invoice: this.editForm.get(['invoice'])!.value
     };

@@ -4,7 +4,6 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { JhiDataUtils, JhiFileLoadError, JhiEventManager, JhiEventWithContent } from 'ng-jhipster';
 
 import { IProduct, Product } from 'app/shared/model/product.model';
@@ -19,7 +18,6 @@ import { ProductCategoryService } from 'app/entities/product-category/product-ca
 })
 export class ProductUpdateComponent implements OnInit {
   isSaving = false;
-
   productcategories: IProductCategory[] = [];
 
   editForm = this.fb.group({
@@ -47,14 +45,7 @@ export class ProductUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ product }) => {
       this.updateForm(product);
 
-      this.productCategoryService
-        .query()
-        .pipe(
-          map((res: HttpResponse<IProductCategory[]>) => {
-            return res.body ? res.body : [];
-          })
-        )
-        .subscribe((resBody: IProductCategory[]) => (this.productcategories = resBody));
+      this.productCategoryService.query().subscribe((res: HttpResponse<IProductCategory[]>) => (this.productcategories = res.body || []));
     });
   }
 

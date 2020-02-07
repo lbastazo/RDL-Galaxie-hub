@@ -29,6 +29,7 @@ describe('Product e2e test', () => {
     productComponentsPage = new ProductComponentsPage();
     await browser.wait(ec.visibilityOf(productComponentsPage.title), 5000);
     expect(await productComponentsPage.getTitle()).to.eq('rdlgalaxieApp.product.home.title');
+    await browser.wait(ec.or(ec.visibilityOf(productComponentsPage.entities), ec.visibilityOf(productComponentsPage.noResult)), 1000);
   });
 
   it('should load create Product page', async () => {
@@ -42,6 +43,7 @@ describe('Product e2e test', () => {
     const nbButtonsBeforeCreate = await productComponentsPage.countDeleteButtons();
 
     await productComponentsPage.clickOnCreateButton();
+
     await promise.all([
       productUpdatePage.setNameInput('name'),
       productUpdatePage.setDescriptionInput('description'),
@@ -50,6 +52,7 @@ describe('Product e2e test', () => {
       productUpdatePage.setImageInput(absolutePath),
       productUpdatePage.productCategorySelectLastOption()
     ]);
+
     expect(await productUpdatePage.getNameInput()).to.eq('name', 'Expected Name value to be equals to name');
     expect(await productUpdatePage.getDescriptionInput()).to.eq('description', 'Expected Description value to be equals to description');
     expect(await productUpdatePage.getPriceInput()).to.eq('5', 'Expected price value to be equals to 5');
@@ -57,6 +60,7 @@ describe('Product e2e test', () => {
       fileNameToUpload,
       'Expected Image value to be end with ' + fileNameToUpload
     );
+
     await productUpdatePage.save();
     expect(await productUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 

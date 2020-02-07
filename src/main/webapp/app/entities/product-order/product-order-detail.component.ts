@@ -13,9 +13,7 @@ export class ProductOrderDetailComponent implements OnInit {
   constructor(protected activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ productOrder }) => {
-      this.productOrder = productOrder;
-    });
+    this.activatedRoute.data.subscribe(({ productOrder }) => (this.productOrder = productOrder));
   }
 
   previousState(): void {

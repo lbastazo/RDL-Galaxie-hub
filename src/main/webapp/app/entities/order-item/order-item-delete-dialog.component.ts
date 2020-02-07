@@ -13,7 +13,7 @@ export class OrderItemDeleteDialogComponent {
 
   constructor(protected orderItemService: OrderItemService, public activeModal: NgbActiveModal, protected eventManager: JhiEventManager) {}
 
-  clear(): void {
+  cancel(): void {
     this.activeModal.dismiss();
   }
 

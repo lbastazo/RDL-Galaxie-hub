@@ -2,13 +2,15 @@
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <h2 id="jhi-order-item-heading" jhiTranslate="rdlgalaxieApp.orderItem.home.createOrEditLabel">Create or edit a Order Item</h2>
+
             <div>
                 <jhi-alert-error></jhi-alert-error>
+
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
-                        readonly />
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
                 </div>
+
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.orderItem.quantity" for="field_quantity">Quantity</label>
                     <input type="number" class="form-control" name="quantity" id="field_quantity"
@@ -28,6 +30,7 @@
                         </small>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.orderItem.totalPrice" for="field_totalPrice">Total Price</label>
                     <input type="number" class="form-control" name="totalPrice" id="field_totalPrice"
@@ -47,12 +50,13 @@
                         </small>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.orderItem.status" for="field_status">Status</label>
                     <select class="form-control" name="status" formControlName="status" id="field_status">
-                        <option value="AVAILABLE">{{'rdlgalaxieApp.OrderItemStatus.AVAILABLE' | translate}}</option>
-                        <option value="OUT_OF_STOCK">{{'rdlgalaxieApp.OrderItemStatus.OUT_OF_STOCK' | translate}}</option>
-                        <option value="BACK_ORDER">{{'rdlgalaxieApp.OrderItemStatus.BACK_ORDER' | translate}}</option>
+                        <option value="AVAILABLE">{{ 'rdlgalaxieApp.OrderItemStatus.AVAILABLE' | translate }}</option>
+                        <option value="OUT_OF_STOCK">{{ 'rdlgalaxieApp.OrderItemStatus.OUT_OF_STOCK' | translate }}</option>
+                        <option value="BACK_ORDER">{{ 'rdlgalaxieApp.OrderItemStatus.BACK_ORDER' | translate }}</option>
                     </select>
                     <div *ngIf="editForm.get('status')!.invalid && (editForm.get('status')!.dirty || editForm.get('status')!.touched)">
                         <small class="form-text text-danger"
@@ -66,23 +70,26 @@
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.orderItem.product" for="field_product">Product</label>
                     <select class="form-control" id="field_product" name="product" formControlName="product">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="productOption.id === editForm.get('product')!.value?.id ? editForm.get('product')!.value : productOption" *ngFor="let productOption of products; trackBy: trackById">{{productOption.id}}</option>
+                        <option [ngValue]="productOption.id === editForm.get('product')!.value?.id ? editForm.get('product')!.value : productOption" *ngFor="let productOption of products; trackBy: trackById">{{ productOption.id }}</option>
                     </select>
                 </div>
+
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.orderItem.order" for="field_order">Order</label>
                     <select class="form-control" id="field_order" name="order" formControlName="order">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="productOrderOption.id === editForm.get('order')!.value?.id ? editForm.get('order')!.value : productOrderOption" *ngFor="let productOrderOption of productorders; trackBy: trackById">{{productOrderOption.id}}</option>
+                        <option [ngValue]="productOrderOption.id === editForm.get('order')!.value?.id ? editForm.get('order')!.value : productOrderOption" *ngFor="let productOrderOption of productorders; trackBy: trackById">{{ productOrderOption.id }}</option>
                     </select>
                 </div>
             </div>
+
             <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
-                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
+
                 <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>
         </form>

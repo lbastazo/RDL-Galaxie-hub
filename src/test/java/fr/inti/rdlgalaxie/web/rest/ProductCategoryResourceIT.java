@@ -110,7 +110,7 @@ public class ProductCategoryResourceIT {
 
         // Create the ProductCategory
         restProductCategoryMockMvc.perform(post("/api/product-categories")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(productCategory)))
             .andExpect(status().isCreated());
 
@@ -131,7 +131,7 @@ public class ProductCategoryResourceIT {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restProductCategoryMockMvc.perform(post("/api/product-categories")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(productCategory)))
             .andExpect(status().isBadRequest());
 
@@ -150,7 +150,7 @@ public class ProductCategoryResourceIT {
         // Create the ProductCategory, which fails.
 
         restProductCategoryMockMvc.perform(post("/api/product-categories")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(productCategory)))
             .andExpect(status().isBadRequest());
 
@@ -166,7 +166,7 @@ public class ProductCategoryResourceIT {
         // Get all the productCategoryList
         restProductCategoryMockMvc.perform(get("/api/product-categories?sort=id,desc"))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(productCategory.getId())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)));
@@ -180,7 +180,7 @@ public class ProductCategoryResourceIT {
         // Get the productCategory
         restProductCategoryMockMvc.perform(get("/api/product-categories/{id}", productCategory.getId()))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(productCategory.getId()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION));
@@ -207,7 +207,7 @@ public class ProductCategoryResourceIT {
             .description(UPDATED_DESCRIPTION);
 
         restProductCategoryMockMvc.perform(put("/api/product-categories")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(updatedProductCategory)))
             .andExpect(status().isOk());
 
@@ -227,7 +227,7 @@ public class ProductCategoryResourceIT {
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restProductCategoryMockMvc.perform(put("/api/product-categories")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(productCategory)))
             .andExpect(status().isBadRequest());
 
@@ -245,7 +245,7 @@ public class ProductCategoryResourceIT {
 
         // Delete the productCategory
         restProductCategoryMockMvc.perform(delete("/api/product-categories/{id}", productCategory.getId())
-            .accept(TestUtil.APPLICATION_JSON_UTF8))
+            .accept(TestUtil.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item

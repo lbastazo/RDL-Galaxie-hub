@@ -23,9 +23,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   ) {}
 
   loadAll(): void {
-    this.productCategoryService.query().subscribe((res: HttpResponse<IProductCategory[]>) => {
-      this.productCategories = res.body ? res.body : [];
-    });
+    this.productCategoryService.query().subscribe((res: HttpResponse<IProductCategory[]>) => (this.productCategories = res.body || []));
   }
 
   ngOnInit(): void {

@@ -13,6 +13,7 @@
     "indicator": {
       "diskSpace": "硬碟空間",
       "mail": "電子郵件",
+      "ping": "Application",
       "mongo": "MongoDB"
     },
     "table": {

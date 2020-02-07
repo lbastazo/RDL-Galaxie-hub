@@ -146,7 +146,7 @@ public class CustomerResourceIT {
 
         // Create the Customer
         restCustomerMockMvc.perform(post("/api/customers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(customer)))
             .andExpect(status().isCreated());
 
@@ -174,7 +174,7 @@ public class CustomerResourceIT {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restCustomerMockMvc.perform(post("/api/customers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(customer)))
             .andExpect(status().isBadRequest());
 
@@ -193,7 +193,7 @@ public class CustomerResourceIT {
         // Create the Customer, which fails.
 
         restCustomerMockMvc.perform(post("/api/customers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(customer)))
             .andExpect(status().isBadRequest());
 
@@ -210,7 +210,7 @@ public class CustomerResourceIT {
         // Create the Customer, which fails.
 
         restCustomerMockMvc.perform(post("/api/customers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(customer)))
             .andExpect(status().isBadRequest());
 
@@ -227,7 +227,7 @@ public class CustomerResourceIT {
         // Create the Customer, which fails.
 
         restCustomerMockMvc.perform(post("/api/customers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(customer)))
             .andExpect(status().isBadRequest());
 
@@ -244,7 +244,7 @@ public class CustomerResourceIT {
         // Create the Customer, which fails.
 
         restCustomerMockMvc.perform(post("/api/customers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(customer)))
             .andExpect(status().isBadRequest());
 
@@ -261,7 +261,7 @@ public class CustomerResourceIT {
         // Create the Customer, which fails.
 
         restCustomerMockMvc.perform(post("/api/customers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(customer)))
             .andExpect(status().isBadRequest());
 
@@ -278,7 +278,7 @@ public class CustomerResourceIT {
         // Create the Customer, which fails.
 
         restCustomerMockMvc.perform(post("/api/customers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(customer)))
             .andExpect(status().isBadRequest());
 
@@ -295,7 +295,7 @@ public class CustomerResourceIT {
         // Create the Customer, which fails.
 
         restCustomerMockMvc.perform(post("/api/customers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(customer)))
             .andExpect(status().isBadRequest());
 
@@ -312,7 +312,7 @@ public class CustomerResourceIT {
         // Create the Customer, which fails.
 
         restCustomerMockMvc.perform(post("/api/customers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(customer)))
             .andExpect(status().isBadRequest());
 
@@ -328,7 +328,7 @@ public class CustomerResourceIT {
         // Get all the customerList
         restCustomerMockMvc.perform(get("/api/customers?sort=id,desc"))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(customer.getId())))
             .andExpect(jsonPath("$.[*].firstName").value(hasItem(DEFAULT_FIRST_NAME)))
             .andExpect(jsonPath("$.[*].lastName").value(hasItem(DEFAULT_LAST_NAME)))
@@ -349,7 +349,7 @@ public class CustomerResourceIT {
         // Get the customer
         restCustomerMockMvc.perform(get("/api/customers/{id}", customer.getId()))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(customer.getId()))
             .andExpect(jsonPath("$.firstName").value(DEFAULT_FIRST_NAME))
             .andExpect(jsonPath("$.lastName").value(DEFAULT_LAST_NAME))
@@ -390,7 +390,7 @@ public class CustomerResourceIT {
             .country(UPDATED_COUNTRY);
 
         restCustomerMockMvc.perform(put("/api/customers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(updatedCustomer)))
             .andExpect(status().isOk());
 
@@ -417,7 +417,7 @@ public class CustomerResourceIT {
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restCustomerMockMvc.perform(put("/api/customers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(customer)))
             .andExpect(status().isBadRequest());
 
@@ -435,7 +435,7 @@ public class CustomerResourceIT {
 
         // Delete the customer
         restCustomerMockMvc.perform(delete("/api/customers/{id}", customer.getId())
-            .accept(TestUtil.APPLICATION_JSON_UTF8))
+            .accept(TestUtil.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item

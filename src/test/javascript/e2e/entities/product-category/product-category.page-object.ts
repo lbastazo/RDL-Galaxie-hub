@@ -4,6 +4,8 @@ export class ProductCategoryComponentsPage {
   createButton = element(by.id('jh-create-entity'));
   deleteButtons = element.all(by.css('jhi-product-category div table .btn-danger'));
   title = element.all(by.css('jhi-product-category div h2#page-heading span')).first();
+  noResult = element(by.id('no-result'));
+  entities = element(by.id('entities'));
 
   async clickOnCreateButton(): Promise<void> {
     await this.createButton.click();
@@ -26,6 +28,7 @@ export class ProductCategoryUpdatePage {
   pageTitle = element(by.id('jhi-product-category-heading'));
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
+
   nameInput = element(by.id('field_name'));
   descriptionInput = element(by.id('field_description'));
 

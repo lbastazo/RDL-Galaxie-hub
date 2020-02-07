@@ -13,6 +13,7 @@
     "indicator": {
       "diskSpace": "Dung lượng trống",
       "mail": "Email",
+      "ping": "Application",
       "mongo": "MongoDB"
     },
     "table": {
