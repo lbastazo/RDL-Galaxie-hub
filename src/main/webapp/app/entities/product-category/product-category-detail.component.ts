@@ -13,9 +13,7 @@ export class ProductCategoryDetailComponent implements OnInit {
   constructor(protected activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ productCategory }) => {
-      this.productCategory = productCategory;
-    });
+    this.activatedRoute.data.subscribe(({ productCategory }) => (this.productCategory = productCategory));
   }
 
   previousState(): void {

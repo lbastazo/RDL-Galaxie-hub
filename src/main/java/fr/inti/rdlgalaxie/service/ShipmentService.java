@@ -47,7 +47,6 @@ public class ShipmentService {
         return shipmentRepository.findAll(pageable);
     }
 
-
     /**
      * Get one shipment by id.
      *

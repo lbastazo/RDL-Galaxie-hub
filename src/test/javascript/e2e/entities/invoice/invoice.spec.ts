@@ -25,6 +25,7 @@ describe('Invoice e2e test', () => {
     invoiceComponentsPage = new InvoiceComponentsPage();
     await browser.wait(ec.visibilityOf(invoiceComponentsPage.title), 5000);
     expect(await invoiceComponentsPage.getTitle()).to.eq('rdlgalaxieApp.invoice.home.title');
+    await browser.wait(ec.or(ec.visibilityOf(invoiceComponentsPage.entities), ec.visibilityOf(invoiceComponentsPage.noResult)), 1000);
   });
 
   it('should load create Invoice page', async () => {
@@ -38,6 +39,7 @@ describe('Invoice e2e test', () => {
     const nbButtonsBeforeCreate = await invoiceComponentsPage.countDeleteButtons();
 
     await invoiceComponentsPage.clickOnCreateButton();
+
     await promise.all([
       invoiceUpdatePage.setDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       invoiceUpdatePage.setDetailsInput('details'),
@@ -47,6 +49,7 @@ describe('Invoice e2e test', () => {
       invoiceUpdatePage.setPaymentAmountInput('5'),
       invoiceUpdatePage.orderSelectLastOption()
     ]);
+
     expect(await invoiceUpdatePage.getDateInput()).to.contain('2001-01-01T02:30', 'Expected date value to be equals to 2000-12-31');
     expect(await invoiceUpdatePage.getDetailsInput()).to.eq('details', 'Expected Details value to be equals to details');
     expect(await invoiceUpdatePage.getPaymentDateInput()).to.contain(
@@ -54,6 +57,7 @@ describe('Invoice e2e test', () => {
       'Expected paymentDate value to be equals to 2000-12-31'
     );
     expect(await invoiceUpdatePage.getPaymentAmountInput()).to.eq('5', 'Expected paymentAmount value to be equals to 5');
+
     await invoiceUpdatePage.save();
     expect(await invoiceUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 

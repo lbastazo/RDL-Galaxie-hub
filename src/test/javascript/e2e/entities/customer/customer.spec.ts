@@ -25,6 +25,7 @@ describe('Customer e2e test', () => {
     customerComponentsPage = new CustomerComponentsPage();
     await browser.wait(ec.visibilityOf(customerComponentsPage.title), 5000);
     expect(await customerComponentsPage.getTitle()).to.eq('rdlgalaxieApp.customer.home.title');
+    await browser.wait(ec.or(ec.visibilityOf(customerComponentsPage.entities), ec.visibilityOf(customerComponentsPage.noResult)), 1000);
   });
 
   it('should load create Customer page', async () => {
@@ -38,6 +39,7 @@ describe('Customer e2e test', () => {
     const nbButtonsBeforeCreate = await customerComponentsPage.countDeleteButtons();
 
     await customerComponentsPage.clickOnCreateButton();
+
     await promise.all([
       customerUpdatePage.setFirstNameInput('firstName'),
       customerUpdatePage.setLastNameInput('lastName'),
@@ -50,6 +52,7 @@ describe('Customer e2e test', () => {
       customerUpdatePage.setCountryInput('country'),
       customerUpdatePage.userSelectLastOption()
     ]);
+
     expect(await customerUpdatePage.getFirstNameInput()).to.eq('firstName', 'Expected FirstName value to be equals to firstName');
     expect(await customerUpdatePage.getLastNameInput()).to.eq('lastName', 'Expected LastName value to be equals to lastName');
     expect(await customerUpdatePage.getEmailInput()).to.eq('}o@)Y&lt;L.d52[', 'Expected Email value to be equals to }o@)Y&lt;L.d52[');
@@ -64,6 +67,7 @@ describe('Customer e2e test', () => {
     );
     expect(await customerUpdatePage.getCityInput()).to.eq('city', 'Expected City value to be equals to city');
     expect(await customerUpdatePage.getCountryInput()).to.eq('country', 'Expected Country value to be equals to country');
+
     await customerUpdatePage.save();
     expect(await customerUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 

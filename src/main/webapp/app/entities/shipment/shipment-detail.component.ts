@@ -13,9 +13,7 @@ export class ShipmentDetailComponent implements OnInit {
   constructor(protected activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ shipment }) => {
-      this.shipment = shipment;
-    });
+    this.activatedRoute.data.subscribe(({ shipment }) => (this.shipment = shipment));
   }
 
   previousState(): void {

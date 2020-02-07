@@ -47,7 +47,6 @@ public class OrderItemService {
         return orderItemRepository.findAll(pageable);
     }
 
-
     /**
      * Get one orderItem by id.
      *

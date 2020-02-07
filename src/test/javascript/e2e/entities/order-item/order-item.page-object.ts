@@ -4,6 +4,8 @@ export class OrderItemComponentsPage {
   createButton = element(by.id('jh-create-entity'));
   deleteButtons = element.all(by.css('jhi-order-item div table .btn-danger'));
   title = element.all(by.css('jhi-order-item div h2#page-heading span')).first();
+  noResult = element(by.id('no-result'));
+  entities = element(by.id('entities'));
 
   async clickOnCreateButton(): Promise<void> {
     await this.createButton.click();
@@ -26,9 +28,11 @@ export class OrderItemUpdatePage {
   pageTitle = element(by.id('jhi-order-item-heading'));
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
+
   quantityInput = element(by.id('field_quantity'));
   totalPriceInput = element(by.id('field_totalPrice'));
   statusSelect = element(by.id('field_status'));
+
   productSelect = element(by.id('field_product'));
   orderSelect = element(by.id('field_order'));
 

@@ -25,6 +25,10 @@ describe('ProductOrder e2e test', () => {
     productOrderComponentsPage = new ProductOrderComponentsPage();
     await browser.wait(ec.visibilityOf(productOrderComponentsPage.title), 5000);
     expect(await productOrderComponentsPage.getTitle()).to.eq('rdlgalaxieApp.productOrder.home.title');
+    await browser.wait(
+      ec.or(ec.visibilityOf(productOrderComponentsPage.entities), ec.visibilityOf(productOrderComponentsPage.noResult)),
+      1000
+    );
   });
 
   it('should load create ProductOrder page', async () => {
@@ -38,17 +42,20 @@ describe('ProductOrder e2e test', () => {
     const nbButtonsBeforeCreate = await productOrderComponentsPage.countDeleteButtons();
 
     await productOrderComponentsPage.clickOnCreateButton();
+
     await promise.all([
       productOrderUpdatePage.setPlacedDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       productOrderUpdatePage.statusSelectLastOption(),
       productOrderUpdatePage.setCodeInput('code'),
       productOrderUpdatePage.customerSelectLastOption()
     ]);
+
     expect(await productOrderUpdatePage.getPlacedDateInput()).to.contain(
       '2001-01-01T02:30',
       'Expected placedDate value to be equals to 2000-12-31'
     );
     expect(await productOrderUpdatePage.getCodeInput()).to.eq('code', 'Expected Code value to be equals to code');
+
     await productOrderUpdatePage.save();
     expect(await productOrderUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 

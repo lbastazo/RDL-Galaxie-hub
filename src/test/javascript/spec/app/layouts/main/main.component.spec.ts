@@ -42,7 +42,7 @@ describe('Component Tests', () => {
       const parentRoutePageTitle = 'parentTitle';
       const childRoutePageTitle = 'childTitle';
       const navigationEnd = new NavigationEnd(1, '', '');
-      const langChangeEvent: LangChangeEvent = { lang: 'en', translations: null };
+      const langChangeEvent: LangChangeEvent = { lang: 'fr', translations: null };
 
       beforeEach(() => {
         routerState = { snapshot: { root: {} } };
@@ -50,6 +50,7 @@ describe('Component Tests', () => {
         spyOn(translateService, 'get').and.callFake((key: string) => {
           return of(key + ' translated');
         });
+        translateService.currentLang = 'fr';
         spyOn(titleService, 'setTitle');
         comp.ngOnInit();
       });

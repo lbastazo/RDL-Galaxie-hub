@@ -3,8 +3,6 @@ package fr.inti.rdlgalaxie.config;
 import fr.inti.rdlgalaxie.security.*;
 import fr.inti.rdlgalaxie.security.jwt.*;
 
-import org.springframework.beans.factory.BeanInitializationException;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;

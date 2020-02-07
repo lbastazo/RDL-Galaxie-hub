@@ -4,7 +4,6 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { IOrderItem, OrderItem } from 'app/shared/model/order-item.model';
 import { OrderItemService } from './order-item.service';
@@ -21,9 +20,7 @@ type SelectableEntity = IProduct | IProductOrder;
 })
 export class OrderItemUpdateComponent implements OnInit {
   isSaving = false;
-
   products: IProduct[] = [];
-
   productorders: IProductOrder[] = [];
 
   editForm = this.fb.group({
@@ -47,23 +44,9 @@ export class OrderItemUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ orderItem }) => {
       this.updateForm(orderItem);
 
-      this.productService
-        .query()
-        .pipe(
-          map((res: HttpResponse<IProduct[]>) => {
-            return res.body ? res.body : [];
-          })
-        )
-        .subscribe((resBody: IProduct[]) => (this.products = resBody));
+      this.productService.query().subscribe((res: HttpResponse<IProduct[]>) => (this.products = res.body || []));
 
-      this.productOrderService
-        .query()
-        .pipe(
-          map((res: HttpResponse<IProductOrder[]>) => {
-            return res.body ? res.body : [];
-          })
-        )
-        .subscribe((resBody: IProductOrder[]) => (this.productorders = resBody));
+      this.productOrderService.query().subscribe((res: HttpResponse<IProductOrder[]>) => (this.productorders = res.body || []));
     });
   }
 
