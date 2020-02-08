@@ -13,7 +13,9 @@ export class OrderItemDetailComponent implements OnInit {
   constructor(protected activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ orderItem }) => (this.orderItem = orderItem));
+    this.activatedRoute.data.subscribe(({ orderItem }) => {
+      this.orderItem = orderItem;
+    });
   }
 
   previousState(): void {

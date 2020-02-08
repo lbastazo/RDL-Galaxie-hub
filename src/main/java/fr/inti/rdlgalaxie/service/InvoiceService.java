@@ -47,6 +47,7 @@ public class InvoiceService {
         return invoiceRepository.findAll(pageable);
     }
 
+
     /**
      * Get one invoice by id.
      *

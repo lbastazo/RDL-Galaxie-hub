@@ -16,7 +16,8 @@ describe('Component Tests', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [RdlgalaxieTestModule],
-        declarations: [ProductCategoryComponent]
+        declarations: [ProductCategoryComponent],
+        providers: []
       })
         .overrideTemplate(ProductCategoryComponent, '')
         .compileComponents();

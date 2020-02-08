@@ -34,7 +34,6 @@ describe('Component Tests', () => {
         expect(comp.orderProp).toBe('name');
         expect(comp.reverse).toBe(false);
       });
-
       it('Should call load all on init', () => {
         // GIVEN
         const log = new Log('main', 'WARN');
@@ -56,7 +55,6 @@ describe('Component Tests', () => {
         expect(comp.loggers && comp.loggers[0]).toEqual(jasmine.objectContaining(log));
       });
     });
-
     describe('change log level', () => {
       it('should change log level correctly', () => {
         // GIVEN

@@ -35,8 +35,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   ) {}
 
   loadPage(page?: number): void {
-    const pageToLoad: number = page || this.page;
-
+    const pageToLoad: number = page ? page : this.page;
     this.productService
       .query({
         page: pageToLoad - 1,
@@ -106,7 +105,7 @@ export class ProductComponent implements OnInit, OnDestroy {
         sort: this.predicate + ',' + (this.ascending ? 'asc' : 'desc')
       }
     });
-    this.products = data || [];
+    this.products = data ? data : [];
   }
 
   protected onError(): void {

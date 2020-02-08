@@ -25,10 +25,6 @@ describe('ProductCategory e2e test', () => {
     productCategoryComponentsPage = new ProductCategoryComponentsPage();
     await browser.wait(ec.visibilityOf(productCategoryComponentsPage.title), 5000);
     expect(await productCategoryComponentsPage.getTitle()).to.eq('rdlgalaxieApp.productCategory.home.title');
-    await browser.wait(
-      ec.or(ec.visibilityOf(productCategoryComponentsPage.entities), ec.visibilityOf(productCategoryComponentsPage.noResult)),
-      1000
-    );
   });
 
   it('should load create ProductCategory page', async () => {
@@ -42,15 +38,12 @@ describe('ProductCategory e2e test', () => {
     const nbButtonsBeforeCreate = await productCategoryComponentsPage.countDeleteButtons();
 
     await productCategoryComponentsPage.clickOnCreateButton();
-
     await promise.all([productCategoryUpdatePage.setNameInput('name'), productCategoryUpdatePage.setDescriptionInput('description')]);
-
     expect(await productCategoryUpdatePage.getNameInput()).to.eq('name', 'Expected Name value to be equals to name');
     expect(await productCategoryUpdatePage.getDescriptionInput()).to.eq(
       'description',
       'Expected Description value to be equals to description'
     );
-
     await productCategoryUpdatePage.save();
     expect(await productCategoryUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 

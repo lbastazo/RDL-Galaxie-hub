@@ -135,7 +135,7 @@ public class InvoiceResourceIT {
 
         // Create the Invoice
         restInvoiceMockMvc.perform(post("/api/invoices")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(invoice)))
             .andExpect(status().isCreated());
 
@@ -160,7 +160,7 @@ public class InvoiceResourceIT {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restInvoiceMockMvc.perform(post("/api/invoices")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(invoice)))
             .andExpect(status().isBadRequest());
 
@@ -179,7 +179,7 @@ public class InvoiceResourceIT {
         // Create the Invoice, which fails.
 
         restInvoiceMockMvc.perform(post("/api/invoices")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(invoice)))
             .andExpect(status().isBadRequest());
 
@@ -196,7 +196,7 @@ public class InvoiceResourceIT {
         // Create the Invoice, which fails.
 
         restInvoiceMockMvc.perform(post("/api/invoices")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(invoice)))
             .andExpect(status().isBadRequest());
 
@@ -213,7 +213,7 @@ public class InvoiceResourceIT {
         // Create the Invoice, which fails.
 
         restInvoiceMockMvc.perform(post("/api/invoices")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(invoice)))
             .andExpect(status().isBadRequest());
 
@@ -230,7 +230,7 @@ public class InvoiceResourceIT {
         // Create the Invoice, which fails.
 
         restInvoiceMockMvc.perform(post("/api/invoices")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(invoice)))
             .andExpect(status().isBadRequest());
 
@@ -247,7 +247,7 @@ public class InvoiceResourceIT {
         // Create the Invoice, which fails.
 
         restInvoiceMockMvc.perform(post("/api/invoices")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(invoice)))
             .andExpect(status().isBadRequest());
 
@@ -263,7 +263,7 @@ public class InvoiceResourceIT {
         // Get all the invoiceList
         restInvoiceMockMvc.perform(get("/api/invoices?sort=id,desc"))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(invoice.getId())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].details").value(hasItem(DEFAULT_DETAILS)))
@@ -281,7 +281,7 @@ public class InvoiceResourceIT {
         // Get the invoice
         restInvoiceMockMvc.perform(get("/api/invoices/{id}", invoice.getId()))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(invoice.getId()))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.details").value(DEFAULT_DETAILS))
@@ -316,7 +316,7 @@ public class InvoiceResourceIT {
             .paymentAmount(UPDATED_PAYMENT_AMOUNT);
 
         restInvoiceMockMvc.perform(put("/api/invoices")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(updatedInvoice)))
             .andExpect(status().isOk());
 
@@ -340,7 +340,7 @@ public class InvoiceResourceIT {
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restInvoiceMockMvc.perform(put("/api/invoices")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(invoice)))
             .andExpect(status().isBadRequest());
 
@@ -358,7 +358,7 @@ public class InvoiceResourceIT {
 
         // Delete the invoice
         restInvoiceMockMvc.perform(delete("/api/invoices/{id}", invoice.getId())
-            .accept(TestUtil.APPLICATION_JSON))
+            .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item

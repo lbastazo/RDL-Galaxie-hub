@@ -13,14 +13,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.*;
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
 
-import javax.annotation.PreDestroy;
-
 @Configuration
 @EnableCaching
-public class CacheConfiguration {
+public class CacheConfiguration implements DisposableBean {
 
     private final Logger log = LoggerFactory.getLogger(CacheConfiguration.class);
 
@@ -30,8 +29,8 @@ public class CacheConfiguration {
         this.env = env;
     }
 
-    @PreDestroy
-    public void destroy() {
+    @Override
+    public void destroy() throws Exception {
         log.info("Closing Cache Manager");
         Hazelcast.shutdownAll();
     }

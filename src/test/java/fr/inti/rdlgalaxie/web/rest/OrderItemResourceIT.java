@@ -117,7 +117,7 @@ public class OrderItemResourceIT {
 
         // Create the OrderItem
         restOrderItemMockMvc.perform(post("/api/order-items")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(orderItem)))
             .andExpect(status().isCreated());
 
@@ -139,7 +139,7 @@ public class OrderItemResourceIT {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restOrderItemMockMvc.perform(post("/api/order-items")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(orderItem)))
             .andExpect(status().isBadRequest());
 
@@ -158,7 +158,7 @@ public class OrderItemResourceIT {
         // Create the OrderItem, which fails.
 
         restOrderItemMockMvc.perform(post("/api/order-items")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(orderItem)))
             .andExpect(status().isBadRequest());
 
@@ -175,7 +175,7 @@ public class OrderItemResourceIT {
         // Create the OrderItem, which fails.
 
         restOrderItemMockMvc.perform(post("/api/order-items")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(orderItem)))
             .andExpect(status().isBadRequest());
 
@@ -192,7 +192,7 @@ public class OrderItemResourceIT {
         // Create the OrderItem, which fails.
 
         restOrderItemMockMvc.perform(post("/api/order-items")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(orderItem)))
             .andExpect(status().isBadRequest());
 
@@ -208,7 +208,7 @@ public class OrderItemResourceIT {
         // Get all the orderItemList
         restOrderItemMockMvc.perform(get("/api/order-items?sort=id,desc"))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(orderItem.getId())))
             .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY)))
             .andExpect(jsonPath("$.[*].totalPrice").value(hasItem(DEFAULT_TOTAL_PRICE.intValue())))
@@ -223,7 +223,7 @@ public class OrderItemResourceIT {
         // Get the orderItem
         restOrderItemMockMvc.perform(get("/api/order-items/{id}", orderItem.getId()))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(orderItem.getId()))
             .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY))
             .andExpect(jsonPath("$.totalPrice").value(DEFAULT_TOTAL_PRICE.intValue()))
@@ -252,7 +252,7 @@ public class OrderItemResourceIT {
             .status(UPDATED_STATUS);
 
         restOrderItemMockMvc.perform(put("/api/order-items")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(updatedOrderItem)))
             .andExpect(status().isOk());
 
@@ -273,7 +273,7 @@ public class OrderItemResourceIT {
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restOrderItemMockMvc.perform(put("/api/order-items")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(orderItem)))
             .andExpect(status().isBadRequest());
 
@@ -291,7 +291,7 @@ public class OrderItemResourceIT {
 
         // Delete the orderItem
         restOrderItemMockMvc.perform(delete("/api/order-items/{id}", orderItem.getId())
-            .accept(TestUtil.APPLICATION_JSON))
+            .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item

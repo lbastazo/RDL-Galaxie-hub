@@ -45,6 +45,7 @@ public class ProductCategoryService {
         return productCategoryRepository.findAll();
     }
 
+
     /**
      * Get one productCategory by id.
      *

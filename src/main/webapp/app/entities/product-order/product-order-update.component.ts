@@ -4,6 +4,7 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
@@ -18,6 +19,7 @@ import { CustomerService } from 'app/entities/customer/customer.service';
 })
 export class ProductOrderUpdateComponent implements OnInit {
   isSaving = false;
+
   customers: ICustomer[] = [];
 
   editForm = this.fb.group({
@@ -37,21 +39,23 @@ export class ProductOrderUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ productOrder }) => {
-      if (!productOrder.id) {
-        const today = moment().startOf('day');
-        productOrder.placedDate = today;
-      }
-
       this.updateForm(productOrder);
 
-      this.customerService.query().subscribe((res: HttpResponse<ICustomer[]>) => (this.customers = res.body || []));
+      this.customerService
+        .query()
+        .pipe(
+          map((res: HttpResponse<ICustomer[]>) => {
+            return res.body ? res.body : [];
+          })
+        )
+        .subscribe((resBody: ICustomer[]) => (this.customers = resBody));
     });
   }
 
   updateForm(productOrder: IProductOrder): void {
     this.editForm.patchValue({
       id: productOrder.id,
-      placedDate: productOrder.placedDate ? productOrder.placedDate.format(DATE_TIME_FORMAT) : null,
+      placedDate: productOrder.placedDate != null ? productOrder.placedDate.format(DATE_TIME_FORMAT) : null,
       status: productOrder.status,
       code: productOrder.code,
       customer: productOrder.customer
@@ -76,7 +80,8 @@ export class ProductOrderUpdateComponent implements OnInit {
     return {
       ...new ProductOrder(),
       id: this.editForm.get(['id'])!.value,
-      placedDate: this.editForm.get(['placedDate'])!.value ? moment(this.editForm.get(['placedDate'])!.value, DATE_TIME_FORMAT) : undefined,
+      placedDate:
+        this.editForm.get(['placedDate'])!.value != null ? moment(this.editForm.get(['placedDate'])!.value, DATE_TIME_FORMAT) : undefined,
       status: this.editForm.get(['status'])!.value,
       code: this.editForm.get(['code'])!.value,
       customer: this.editForm.get(['customer'])!.value

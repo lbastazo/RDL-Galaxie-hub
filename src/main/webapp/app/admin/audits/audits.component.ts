@@ -105,6 +105,10 @@ export class AuditsComponent implements OnInit {
 
   private onSuccess(audits: Audit[] | null, headers: HttpHeaders): void {
     this.totalItems = Number(headers.get('X-Total-Count'));
-    this.audits = audits || [];
+    if (audits === null) {
+      this.audits = [];
+    } else {
+      this.audits = audits;
+    }
   }
 }

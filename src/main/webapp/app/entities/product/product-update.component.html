@@ -2,15 +2,13 @@
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <h2 id="jhi-product-heading" jhiTranslate="rdlgalaxieApp.product.home.createOrEditLabel">Create or edit a Product</h2>
-
             <div>
                 <jhi-alert-error></jhi-alert-error>
-
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
                 </div>
-
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.product.name" for="field_name">Name</label>
                     <input type="text" class="form-control" name="name" id="field_name"
@@ -22,13 +20,11 @@
                         </small>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.product.description" for="field_description">Description</label>
                     <input type="text" class="form-control" name="description" id="field_description"
                            formControlName="description"/>
                 </div>
-
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.product.price" for="field_price">Price</label>
                     <input type="number" class="form-control" name="price" id="field_price"
@@ -48,15 +44,14 @@
                         </small>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.product.size" for="field_size">Size</label>
                     <select class="form-control" name="size" formControlName="size" id="field_size">
-                        <option value="S">{{ 'rdlgalaxieApp.Size.S' | translate }}</option>
-                        <option value="M">{{ 'rdlgalaxieApp.Size.M' | translate }}</option>
-                        <option value="L">{{ 'rdlgalaxieApp.Size.L' | translate }}</option>
-                        <option value="XL">{{ 'rdlgalaxieApp.Size.XL' | translate }}</option>
-                        <option value="XXL">{{ 'rdlgalaxieApp.Size.XXL' | translate }}</option>
+                        <option value="S">{{'rdlgalaxieApp.Size.S' | translate}}</option>
+                        <option value="M">{{'rdlgalaxieApp.Size.M' | translate}}</option>
+                        <option value="L">{{'rdlgalaxieApp.Size.L' | translate}}</option>
+                        <option value="XL">{{'rdlgalaxieApp.Size.XL' | translate}}</option>
+                        <option value="XXL">{{'rdlgalaxieApp.Size.XXL' | translate}}</option>
                     </select>
                     <div *ngIf="editForm.get('size')!.invalid && (editForm.get('size')!.dirty || editForm.get('size')!.touched)">
                         <small class="form-text text-danger"
@@ -65,15 +60,14 @@
                         </small>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.product.image" for="field_image">Image</label>
                     <div>
                         <img [src]="'data:' + editForm.get('imageContentType')!.value + ';base64,' + editForm.get('image')!.value" style="max-height: 100px;" *ngIf="editForm.get('image')!.value" alt="product image"/>
                         <div *ngIf="editForm.get('image')!.value" class="form-text text-danger clearfix">
-                            <span class="pull-left">{{ editForm.get('imageContentType')!.value }}, {{ byteSize(editForm.get('image')!.value) }}</span>
+                            <span class="pull-left">{{editForm.get('imageContentType')!.value}}, {{byteSize(editForm.get('image')!.value)}}</span>
                             <button type="button" (click)="clearInputImage('image', 'imageContentType', 'file_image')" class="btn btn-secondary btn-xs pull-right">
-                                <fa-icon icon="times"></fa-icon>
+                                <fa-icon [icon]="'times'"></fa-icon>
                             </button>
                         </div>
                         <input type="file" id="file_image" (change)="setFileData($event, 'image', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
@@ -88,18 +82,16 @@
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.product.productCategory" for="field_productCategory">Product Category</label>
                     <select class="form-control" id="field_productCategory" name="productCategory" formControlName="productCategory">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="productCategoryOption.id === editForm.get('productCategory')!.value?.id ? editForm.get('productCategory')!.value : productCategoryOption" *ngFor="let productCategoryOption of productcategories; trackBy: trackById">{{ productCategoryOption.id }}</option>
+                        <option [ngValue]="productCategoryOption.id === editForm.get('productCategory')!.value?.id ? editForm.get('productCategory')!.value : productCategoryOption" *ngFor="let productCategoryOption of productcategories; trackBy: trackById">{{productCategoryOption.id}}</option>
                     </select>
                 </div>
             </div>
-
             <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
-
                 <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>
         </form>

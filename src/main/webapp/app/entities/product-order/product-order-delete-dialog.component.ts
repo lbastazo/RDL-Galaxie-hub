@@ -17,7 +17,7 @@ export class ProductOrderDeleteDialogComponent {
     protected eventManager: JhiEventManager
   ) {}
 
-  cancel(): void {
+  clear(): void {
     this.activeModal.dismiss();
   }
 

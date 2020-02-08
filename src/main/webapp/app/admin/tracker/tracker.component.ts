@@ -16,7 +16,6 @@ export class TrackerComponent implements OnInit, OnDestroy {
 
   showActivity(activity: TrackerActivity): void {
     let existingActivity = false;
-
     for (let index = 0; index < this.activities.length; index++) {
       if (this.activities[index].sessionId === activity.sessionId) {
         existingActivity = true;
@@ -27,7 +26,6 @@ export class TrackerComponent implements OnInit, OnDestroy {
         }
       }
     }
-
     if (!existingActivity && activity.page !== 'logout') {
       this.activities.push(activity);
     }

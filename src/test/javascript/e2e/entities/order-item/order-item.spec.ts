@@ -25,7 +25,6 @@ describe('OrderItem e2e test', () => {
     orderItemComponentsPage = new OrderItemComponentsPage();
     await browser.wait(ec.visibilityOf(orderItemComponentsPage.title), 5000);
     expect(await orderItemComponentsPage.getTitle()).to.eq('rdlgalaxieApp.orderItem.home.title');
-    await browser.wait(ec.or(ec.visibilityOf(orderItemComponentsPage.entities), ec.visibilityOf(orderItemComponentsPage.noResult)), 1000);
   });
 
   it('should load create OrderItem page', async () => {
@@ -39,7 +38,6 @@ describe('OrderItem e2e test', () => {
     const nbButtonsBeforeCreate = await orderItemComponentsPage.countDeleteButtons();
 
     await orderItemComponentsPage.clickOnCreateButton();
-
     await promise.all([
       orderItemUpdatePage.setQuantityInput('5'),
       orderItemUpdatePage.setTotalPriceInput('5'),
@@ -47,10 +45,8 @@ describe('OrderItem e2e test', () => {
       orderItemUpdatePage.productSelectLastOption(),
       orderItemUpdatePage.orderSelectLastOption()
     ]);
-
     expect(await orderItemUpdatePage.getQuantityInput()).to.eq('5', 'Expected quantity value to be equals to 5');
     expect(await orderItemUpdatePage.getTotalPriceInput()).to.eq('5', 'Expected totalPrice value to be equals to 5');
-
     await orderItemUpdatePage.save();
     expect(await orderItemUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 

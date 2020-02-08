@@ -34,8 +34,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
   ) {}
 
   loadPage(page?: number): void {
-    const pageToLoad: number = page || this.page;
-
+    const pageToLoad: number = page ? page : this.page;
     this.customerService
       .query({
         page: pageToLoad - 1,
@@ -97,7 +96,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
         sort: this.predicate + ',' + (this.ascending ? 'asc' : 'desc')
       }
     });
-    this.customers = data || [];
+    this.customers = data ? data : [];
   }
 
   protected onError(): void {

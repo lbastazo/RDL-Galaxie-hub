@@ -13,7 +13,6 @@
     "indicator": {
       "diskSpace": "Espai al disc",
       "mail": "Compte de correu electrònic",
-      "ping": "Application",
       "mongo": "MongoDB"
     },
     "table": {

@@ -25,7 +25,6 @@ describe('Shipment e2e test', () => {
     shipmentComponentsPage = new ShipmentComponentsPage();
     await browser.wait(ec.visibilityOf(shipmentComponentsPage.title), 5000);
     expect(await shipmentComponentsPage.getTitle()).to.eq('rdlgalaxieApp.shipment.home.title');
-    await browser.wait(ec.or(ec.visibilityOf(shipmentComponentsPage.entities), ec.visibilityOf(shipmentComponentsPage.noResult)), 1000);
   });
 
   it('should load create Shipment page', async () => {
@@ -39,21 +38,18 @@ describe('Shipment e2e test', () => {
     const nbButtonsBeforeCreate = await shipmentComponentsPage.countDeleteButtons();
 
     await shipmentComponentsPage.clickOnCreateButton();
-
     await promise.all([
       shipmentUpdatePage.setTrackingCodeInput('trackingCode'),
       shipmentUpdatePage.setDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       shipmentUpdatePage.setDetailsInput('details'),
       shipmentUpdatePage.invoiceSelectLastOption()
     ]);
-
     expect(await shipmentUpdatePage.getTrackingCodeInput()).to.eq(
       'trackingCode',
       'Expected TrackingCode value to be equals to trackingCode'
     );
     expect(await shipmentUpdatePage.getDateInput()).to.contain('2001-01-01T02:30', 'Expected date value to be equals to 2000-12-31');
     expect(await shipmentUpdatePage.getDetailsInput()).to.eq('details', 'Expected Details value to be equals to details');
-
     await shipmentUpdatePage.save();
     expect(await shipmentUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 

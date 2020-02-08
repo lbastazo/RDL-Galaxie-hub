@@ -1,5 +1,4 @@
 package fr.inti.rdlgalaxie.domain;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import org.springframework.data.annotation.Id;

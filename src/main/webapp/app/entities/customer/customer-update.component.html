@@ -2,15 +2,13 @@
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <h2 id="jhi-customer-heading" jhiTranslate="rdlgalaxieApp.customer.home.createOrEditLabel">Create or edit a Customer</h2>
-
             <div>
                 <jhi-alert-error></jhi-alert-error>
-
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
                 </div>
-
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.customer.firstName" for="field_firstName">First Name</label>
                     <input type="text" class="form-control" name="firstName" id="field_firstName"
@@ -22,7 +20,6 @@
                         </small>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.customer.lastName" for="field_lastName">Last Name</label>
                     <input type="text" class="form-control" name="lastName" id="field_lastName"
@@ -34,13 +31,12 @@
                         </small>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.customer.gender" for="field_gender">Gender</label>
                     <select class="form-control" name="gender" formControlName="gender" id="field_gender">
-                        <option value="MALE">{{ 'rdlgalaxieApp.Gender.MALE' | translate }}</option>
-                        <option value="FEMALE">{{ 'rdlgalaxieApp.Gender.FEMALE' | translate }}</option>
-                        <option value="OTHER">{{ 'rdlgalaxieApp.Gender.OTHER' | translate }}</option>
+                        <option value="MALE">{{'rdlgalaxieApp.Gender.MALE' | translate}}</option>
+                        <option value="FEMALE">{{'rdlgalaxieApp.Gender.FEMALE' | translate}}</option>
+                        <option value="OTHER">{{'rdlgalaxieApp.Gender.OTHER' | translate}}</option>
                     </select>
                     <div *ngIf="editForm.get('gender')!.invalid && (editForm.get('gender')!.dirty || editForm.get('gender')!.touched)">
                         <small class="form-text text-danger"
@@ -49,7 +45,6 @@
                         </small>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.customer.email" for="field_email">Email</label>
                     <input type="text" class="form-control" name="email" id="field_email"
@@ -65,7 +60,6 @@
                         </small>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.customer.phone" for="field_phone">Phone</label>
                     <input type="text" class="form-control" name="phone" id="field_phone"
@@ -77,7 +71,6 @@
                         </small>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.customer.addressLine1" for="field_addressLine1">Address Line 1</label>
                     <input type="text" class="form-control" name="addressLine1" id="field_addressLine1"
@@ -89,13 +82,11 @@
                         </small>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.customer.addressLine2" for="field_addressLine2">Address Line 2</label>
                     <input type="text" class="form-control" name="addressLine2" id="field_addressLine2"
                            formControlName="addressLine2"/>
                 </div>
-
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.customer.city" for="field_city">City</label>
                     <input type="text" class="form-control" name="city" id="field_city"
@@ -107,7 +98,6 @@
                         </small>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.customer.country" for="field_country">Country</label>
                     <input type="text" class="form-control" name="country" id="field_country"
@@ -124,18 +114,16 @@
                     <label class="form-control-label" jhiTranslate="rdlgalaxieApp.customer.user" for="field_user">User</label>
                     <select class="form-control" id="field_user" name="user" formControlName="user">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.id }}</option>
+                        <option [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{userOption.id}}</option>
                     </select>
                 </div>
             </div>
-
             <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
-
                 <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>
         </form>
