@@ -1,7 +1,10 @@
 {
   "home": {
-    "title": "Welcome, Java Hipster!",
-    "subtitle": "This is your homepage",
+    "title": "Misers of the Galaxy",
+    "titlehome": "Dear stingy, grigous and other flu-sous, welcome !",
+    "subtitle": "Are you tired of spending 3 hours getting lost from website to website, eyeing articles that are far too expensive for what they are? <br/>Same for us ! That's why our site offers you excellence, and will satisfy even the stingest person of the whole galaxy.<br/>Cosmically yours, The Team.",
+    "concept": "Our concept",
+    "conceptdescr": "Our team strives to offer a small quantity of products at negative prices : for the pleasure of your wallet. Good visit! <br/>(To celebrate the opening of the site, order two products, the third is free! So go ahead!)",
     "logged": {
       "message": "You are logged in as user \"{{username}}\"."
     },

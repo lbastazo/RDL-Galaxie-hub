@@ -1,9 +1,8 @@
-<div style="text-align: center">
-
-    <div>
-        <h1 class="display-4" >Chers avares, radins, grigous et autres grippe-sous, <br/>nous vous souhaitons la bienvenue !</h1><br/>
-        <p class="lead" >Vous en avez assez de passer 3 heures à vous perdre de site web en site web, à lorgner sur des articles beaucoup trop chers pour ce qu'ils sont ? <br/>
-            Nous aussi ! C'est pourquoi notre site propose l'excellence, le paroxysme des produits qui sauront satisfaire les plus radins de toute la galaxie.
+<div class="row justify-content-center">
+    <div class="col-12" style="text-align:center">
+        <h1 class="display-5" jhiTranslate="home.titlehome"></h1><br/>
+        <p class="lead" jhiTranslate="home.subtitle">Vous en avez assez de passer 3 heures à vous perdre de site web en site web, à lorgner sur des articles beaucoup trop chers pour ce qu'ils sont ? <br/>
+            Nous aussi ! C'est pourquoi notre site propose l'excellence, le paroxysme des produits qui sauront satisfaire les plus radins de toute la galaxie. <br/>
             Cosmiquement vôtre, L'équipe.</p>
 
         <div [ngSwitch]="isAuthenticated()">
@@ -21,25 +20,23 @@
                 <a class="alert-link" routerLink="account/register" jhiTranslate="global.messages.info.register.link">Register a new account</a>
             </div><br/>
         </div>
-        <h5 >Notre concept</h5>
-        <p>
-            Notre équipe s'évertue à proposer une faible quantité de produits à des prix négatifs. Faites le tour de notre boutique en moins de 20 minutes, pour le plaisir de votre porte-monnaie.
-            Bonne visite ! <br/> (Pour fêter l'ouverture du site, commandez deux produits du site, le troisième est offert ! Alors n'hésitez plus!)
+        <h5 jhiTranslate="home.concept">Notre concept</h5>
+        <p class="lead" jhiTranslate="home.conceptdescr">
+            Our team strives to offer a small quantity of products at negative prices : for the pleasure of your wallet. Good visit ! <br/> (Pour fêter l'ouverture du site, commandez deux produits du site, le troisième est offert ! Alors n'hésitez plus!)
         </p><br/>
 
         <h5 >L'équipe</h5>
 
         <p>Louis : Sbire N°1, he got your BACK ; <br/>
             Pauline : Sbire N°2, Always in FRONT ; <br/>
-            Sarah : Sbire N°3, Always with Pauline ;<br/>
-            Romain : Sbire N°4, SQL pro (Source of Quiproquos at Lunch);<br/>
-            JulieCoton : Sbire N°5, communique avec les eSpring;<br/>
+            Romain : Sbire N°3, SQL pro (Source of Quiproquos at Lunch);<br/>
+            JulieCoton : Sbire N°4, communique avec les eSpring;<br/>
             Lorène : Big Gourou Cosmique of the dead ;</p><br/>
 
         <p>
-            <span class="hipster img-fluid rounded"></span><br/>
-            
-            <span jhiTranslate="home.like">If you like JHipster, don't forget to give us a star on</span> <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.github">GitHub</a>!
+            <span class="hipster"></span><br/>
         </p>
     </div>
 </div>
+
+

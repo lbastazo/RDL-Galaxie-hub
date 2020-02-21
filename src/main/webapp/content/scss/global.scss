@@ -16,7 +16,7 @@ h4 {
 
 /* Increase contrast of links to get 100% on Lighthouse Accessability Audit. Override this color if you want to change the link color, or use a Bootswatch theme */
 a {
-  color: #533f03;
+  color: #00032d;
   font-weight: bold;
 }
 
@@ -72,6 +72,10 @@ Generic styles
 .jh-card {
   padding: 1.5%;
   margin-top: 20px;
+  /* ajout de marges left et right pour ahérer la page d'accueil*/
+  margin-left: 350px;
+  margin-right: 350px;
+  /*fin de l'ajout*/
   border: none;
 }
 
@@ -172,6 +176,58 @@ entity detail page css
       padding-left: 180px;
       margin-left: 0;
     }
+  }
+}
+
+/* ==========================================================================
+Homepage columns
+========================================================================== */
+
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  height: auto;
+  padding: 10px;
+  vertical-align: middle;
+}
+
+/* Left column */
+.column.left {
+  margin: 10px 30px 10px 120px;
+  width: 15%;
+  background: url('../../content/css/terre_hello.gif') no-repeat center;
+  background-size: 110%;
+}
+
+/* Right column */
+.column.right {
+  margin: 10px 30px 10px;
+  width: 20%;
+  background-color: #40739e;
+  color: white;
+}
+
+/* Middle column */
+.column.middle {
+  margin: 10px 30px 10px;
+  width: 70%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: '';
+  width: 100%;
+  padding: 20px;
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 1200px) {
+  .column.left,
+  .column.right,
+  .column.middle {
+    width: 100%;
   }
 }
 

@@ -42,7 +42,7 @@ export const productRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: [],
       defaultSort: 'id,asc',
       pageTitle: 'rdlgalaxieApp.product.home.title'
     },
@@ -55,7 +55,7 @@ export const productRoute: Routes = [
       product: ProductResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: [],
       pageTitle: 'rdlgalaxieApp.product.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -67,7 +67,7 @@ export const productRoute: Routes = [
       product: ProductResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'rdlgalaxieApp.product.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -79,7 +79,7 @@ export const productRoute: Routes = [
       product: ProductResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'rdlgalaxieApp.product.home.title'
     },
     canActivate: [UserRouteAccessService]
