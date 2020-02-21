@@ -75,6 +75,7 @@ Generic styles
   /* ajout de marges left et right pour ahérer la page d'accueil*/
   margin-left: 350px;
   margin-right: 350px;
+  height: auto;
   /*fin de l'ajout*/
   border: none;
 }
@@ -106,9 +107,41 @@ Generic styles
   opacity: 1;
 }
 
+/* ==========================================================================
+FOOTER CODE PAULINE
+========================================================================== */
 .footer {
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
+
+.wrapper {
+  width: 100%;
+  color: white;
+  padding: 10px 0px;
+}
+
+.wapper nav {
+  float: left;
+}
+
+.wrapper nav ul {
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  margin-left: 350px;
+}
+
+.wrapper nav ul li {
+  display: inline-block;
+  list-style: none;
+}
+
+.wrapper nav ul li a {
+  font-weight: 400;
+  font-size: 14px;
+  color: white;
+}
+/* ==========================================================================
+END FOOTER
+========================================================================== */
 
 .hand,
 [jhisortby] {
