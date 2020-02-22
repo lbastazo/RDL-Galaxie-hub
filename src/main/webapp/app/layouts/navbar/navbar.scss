@@ -20,7 +20,9 @@ Navbar
 
 .navbar {
   padding: 0.2rem 1rem;
-  background: url('/../../content/css/bg_planet.png');
+  /* background-img pour navbar
+  background: url('/../../content/css/bg_planet.png'); */
+  background: #1b2465;
 
   ul.navbar-nav {
     .nav-item {

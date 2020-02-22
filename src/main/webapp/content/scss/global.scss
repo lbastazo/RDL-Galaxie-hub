@@ -6,6 +6,10 @@
 Bootstrap tweaks
 ===============================================================*/
 
+body {
+  background: url('../../content/css/bg_planet_body.png');
+  background-size: 100%;
+}
 body,
 h1,
 h2,
@@ -127,6 +131,7 @@ FOOTER CODE PAULINE
 .wrapper nav ul {
   border-top: 1px solid rgba(0, 0, 0, 0.125);
   margin-left: 350px;
+  word-spacing: 60px;
 }
 
 .wrapper nav ul li {
@@ -138,6 +143,7 @@ FOOTER CODE PAULINE
   font-weight: 400;
   font-size: 14px;
   color: white;
+  word-spacing: normal;
 }
 /* ==========================================================================
 END FOOTER
