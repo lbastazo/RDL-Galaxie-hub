@@ -149,6 +149,25 @@ FOOTER CODE PAULINE
 END FOOTER
 ========================================================================== */
 
+/* Header/Blog Title */
+.headertest {
+  padding: 30px;
+  text-align: center;
+  background: url('/../../content/images/bg_header.png');
+  background-color: rgba(0, 0, 255, 0.5);
+  height: 160px;
+}
+
+.headertest h1 {
+  font-family: Quantum;
+  color: white;
+  text-shadow: #8e88eb 0.1em 0.1em 0.2em;
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
 .hand,
 [jhisortby] {
   cursor: pointer;
