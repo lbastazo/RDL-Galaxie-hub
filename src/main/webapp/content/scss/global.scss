@@ -149,14 +149,14 @@ FOOTER CODE PAULINE
 END FOOTER
 ========================================================================== */
 
-/* Header/Blog Title */
+/* Header/Blog Title image */
 .headertest {
   width: 100%;
-  background: url('/../../content/images/bg_header.png');
-  background-size: cover;
   height: 160px;
+  background: url('/../../content/images/bg_header.png') top;
 }
 
+/* Header/Blog Title écriture, mais toutes les écritures ne marchent pas... */
 .headertest h1 {
   font-family: Quantum;
   color: white;
