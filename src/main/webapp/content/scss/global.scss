@@ -151,9 +151,9 @@ END FOOTER
 
 /* Header/Blog Title */
 .headertest {
-  padding: 30px;
-  text-align: center;
+  width: 100%;
   background: url('/../../content/images/bg_header.png');
+  background-size: cover;
   height: 160px;
 }
 
