@@ -9,47 +9,6 @@ Main page styles
   background: url('../../content/images/logo-jhipster.png') no-repeat center;
   background-size: contain;
 }
-/* Colonnes images présentation */
-.lorene {
-  display: inline-block;
-  margin-top: 8px;
-  width: 240px;
-  height: 193px;
-  background: url('../../content/images/logo_3.png') no-repeat center;
-  background-size: contain;
-}
-
-.louis {
-  display: inline-block;
-  width: 200px;
-  height: 200px;
-  background: url('../../content/images/logo_6.png') no-repeat center;
-  background-size: contain;
-}
-
-.pauline {
-  display: inline-block;
-  width: 200px;
-  height: 200px;
-  background: url('../../content/images/logo_5.png') no-repeat center;
-  background-size: contain;
-}
-
-.romain {
-  display: inline-block;
-  width: 200px;
-  height: 200px;
-  background: url('../../content/images/logo_1.png') no-repeat center;
-  background-size: contain;
-}
-
-.julie {
-  display: inline-block;
-  width: 200px;
-  height: 200px;
-  background: url('../../content/images/logo_4.png') no-repeat center;
-  background-size: contain;
-}
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
 @media only screen and (-webkit-min-device-pixel-ratio: 2),

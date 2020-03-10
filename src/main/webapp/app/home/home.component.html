@@ -1,11 +1,79 @@
-
 <div class="row justify-content-center">
+
     <div class="col-12" style="text-align:center">
-        <h2 class="display-5" jhiTranslate="home.titlehome"></h2>
+        <h2 jhiTranslate="home.titlehome">Title</h2>
         <hr width="75%" color="black"><br/>
-        <p class="lead" jhiTranslate="home.subtitle">Vous en avez assez de passer 3 heures à vous perdre de site web en site web, à lorgner sur des articles beaucoup trop chers pour ce qu'ils sont ? <br/>
+
+        <p class="lead" jhiTranslate="home.subtitle">
+            Vous en avez assez de passer 3 heures à vous perdre de site web en site web, à lorgner sur des articles beaucoup trop chers pour ce qu'ils sont ? <br/>
             Nous aussi ! C'est pourquoi notre site propose l'excellence, le paroxysme des produits qui sauront satisfaire les plus radins de toute la galaxie. <br/>
-            Cosmiquement vôtre, L'équipe.</p>
+            Cosmiquement vôtre, L'équipe.
+        </p>
+
+        <div id="slideshow">
+            <ul id="sContent">
+                <li><img src="/../../content/images/PubBo.jpg" alt="Image1" /></li>
+                <li><img src="/../../content/images/Promotion.jpg" alt="Image2" /></li>
+                <li><img src="/../../content/images/Pub-bible.jpg" alt="Image3" /></li>
+            </ul>
+        </div>
+
+        <!-- Catégories des produits avec images et boutons -->
+        <h2>Catégorie des produits</h2><br/>
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+
+                <div class="col-3" style="text-align:center">
+                    <div class="produit">
+                        <p>Bonnets</p>
+                        <button class="bouton from-middle">
+                            <img src="/../../content/images/Produit_12.jpg">
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3" style="text-align:center">
+                    <div class="produit">
+                        <p>Pulls</p>
+                        <button class="bouton from-middle">
+                            <img src="/../../content/images/Produit_3.jpg">
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3" style="text-align:center">
+                    <div class="produit">
+                        <p>Chaussettes</p>
+                        <button class="bouton from-middle">
+                            <img src="/../../content/images/Produit_7.jpg">
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3" style="text-align:center">
+                    <div class="produit">
+                        <p>Mugs</p>
+                        <button class="bouton from-middle">
+                            <img src="/../../content/images/Produit_2.jpg">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+                <div class="row justify-content-center">
+
+                        <div class="bible">
+                            <p>Bible Cosmique</p>
+                            <button class="bouton from-middle">
+                                <img src="/../../content/images/Produit_16.jpg">
+                            </button>
+                        </div>
+                    
+                </div>
+        </div>
+
 
 
         <div [ngSwitch]="isAuthenticated()">
@@ -23,37 +91,7 @@
                 <a class="alert-link" routerLink="account/register" jhiTranslate="global.messages.info.register.link">Register a new account</a>
             </div><br/>
         </div>
-        <h5 jhiTranslate="home.concept">Notre concept</h5>
-        <p class="lead" jhiTranslate="home.conceptdescr">
-            Our team strives to offer a small quantity of products at negative prices : for the pleasure of your wallet. Good visit ! <br/> (Pour fêter l'ouverture du site, commandez deux produits du site, le troisième est offert ! Alors n'hésitez plus!)
-        </p><br/>
 
-        <h5 >L'équipe</h5>
-        <div class="row justify-content-center">
-            <div class="col-2" style="text-align:center">
-                <div class="louis"></div><br/>
-                <span><font size="4px"><b>Louis</b><br/>Sbire N°1, he got your BACK ;</font></span>
-            </div>
-
-            <div class="col-2" style="text-align:center">
-                <div class="pauline"></div>
-                <span><font size="4px"><b>Pauline</b><br/>Sbire N°2, Always in FRONT ;</font></span>
-            </div>
-
-            <div class="col-2" style="text-align:center">
-                <div class="romain"></div>
-                <span><font size="4px"><b>Romain</b><br/>Sbire N°3, SQL pro (Source of Quiproquos at Lunch);</font></span>
-            </div>
-
-            <div class="col-2" style="text-align:center">
-                <div class="julie"></div>
-                <span><font size="4px"><b>JulieCoton</b><br/>Sbire N°4, communique avec les eSpring;</font></span>
-            </div>
-            <div class="col-2" style="text-align:center">
-                <div class="lorene"></div>
-                <span><font size="4px"><b>Lorène</b><br/>Big Gourou Cosmique of the dead ;</font></span>
-            </div>
-        </div>
         <p>
             <span class="hipster"></span><br/>
         </p>

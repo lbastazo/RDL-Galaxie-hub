@@ -111,4 +111,14 @@ export class ProductComponent implements OnInit, OnDestroy {
   protected onError(): void {
     this.ngbPaginationPage = this.page;
   }
+
+  transition(): void {
+    this.router.navigate(['/entities/product'], {
+      queryParams: {
+        page: this.page,
+        sort: this.predicate + ',' + (this.ascending ? 'asc' : 'desc')
+      }
+    });
+    this.loadPage();
+  }
 }

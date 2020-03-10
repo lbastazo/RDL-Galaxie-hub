@@ -117,7 +117,6 @@ FOOTER CODE PAULINE
 ========================================================================== */
 
 .footer {
-  background-color: #1b2465;
   /* Copier seulement ces lignes de code pour le FOOTER, mais le garder comme CLASSE cf : https://www.webtolosa.com/2017/09/21/comment-avoir-un-footer-colle-en-bas-de-page/ */
   position: relative;
   bottom: 0; /* on le colle en bas */
@@ -127,6 +126,7 @@ FOOTER CODE PAULINE
   clear: both;
   /* personnalisation*/
   color: white;
+  background-color: #1b2465;
 }
 
 /* ancien bouts de code de Pauline, mis de côté pour nouvelle mise en page mais FONCTIONNELS.
@@ -321,3 +321,199 @@ ui bootstrap tweaks
 }
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
+
+/* ==========================================================================
+CODE CAROUSEL PAULINE
+========================================================================== */
+/* Slider / tuto : https://www.youtube.com/watch?v=ZsuTciVL8PU */
+@keyframes AutoSlide {
+  0% {
+    left: 0px; /* 1ère image */
+  }
+  10% {
+    left: 0px; /* idem pour attente */
+  }
+  33% {
+    left: -400px; /* 2ème image */
+  }
+  43% {
+    left: -400px; /* idem pour attente */
+  }
+  66% {
+    left: -800px; /* 3ème image */
+  }
+  76% {
+    left: -800px; /* idem pour attente */
+  }
+  100% {
+    left: 0px; /* 1ère image */
+  }
+}
+
+@keyframes AutoSlide {
+  0%,
+  10%,
+  100% {
+    left: 0px; /* 1ère image */
+  }
+  33%,
+  43% {
+    left: -500px; /* 2ème image */
+  }
+  66%,
+  76% {
+    left: -1000px; /* 3ème image */
+  }
+}
+
+#slideshow {
+  position: relative; /* le parent positionné */
+  width: 494px; /* limite en largeur (1 élément du slideshow) */
+  height: 400px; /* limite en hauteur */
+  margin: auto;
+  overflow: hidden; /* on cache l'élément qui déborde */
+}
+
+#sContent li {
+  display: inline; /* on aligne les éléments du slideshow */
+}
+
+#sContent {
+  position: absolute; /* on sort l'élémentdu flux */
+  top: 0; /* on le positionne précisément dans ... */
+  left: 0; /* l'angle haut gauche de son parent positionné */
+  width: 300%; /* ou 300% (car 3 éléments) */
+  margin: 0px;
+  padding: 0;
+
+  /* CSS3 Transition */
+  transition: left 3s;
+
+  /* CSS3 keyframes animation */
+  animation-name: AutoSlide;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+/* ==========================================================================
+CODE PRESENTATION PRODUITS PAULINE
+========================================================================== */
+
+/* ~~~~~~~ INIT. BTN ~~~~~~~ / Bouton sur image */
+
+.bouton {
+  position: relative;
+  font-size: 1.4rem;
+  color: var(--inv);
+  letter-spacing: 1.1rem;
+  text-transform: uppercase;
+  transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.bouton:hover {
+  color: var(--def);
+  transition-delay: 0.6s;
+}
+
+/* From Middle */
+
+.from-middle:before {
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 0;
+  border: 1px solid var(--inv);
+  border-left: 0;
+  border-right: 0;
+}
+
+.from-middle:after {
+  bottom: 0;
+  left: 0;
+  height: 0;
+  width: 100%;
+  background: var(--inv);
+}
+
+.from-middle:hover:before {
+  left: 0;
+  width: 100%;
+}
+
+.from-middle:hover:after {
+  top: 0;
+  height: 100%;
+}
+
+.produit {
+  --def: #0a0707;
+  --inv: #463eed;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+}
+
+.produit img {
+  height: 150px;
+  width: 150px;
+}
+
+.bible {
+  justify-content: center;
+  align-items: center;
+  height: 150 px;
+  width: 219px;
+}
+
+.bible img {
+  height: 150 px;
+  width: 219px;
+}
+
+/* ==========================================================================
+CODE PRESENTATION EQUIPE
+========================================================================== */
+/* Colonnes images présentation */
+.lorene {
+  display: inline-block;
+  margin-top: 8px;
+  width: 240px;
+  height: 193px;
+  background: url('../../content/images/logo_3.png') no-repeat center;
+  background-size: contain;
+}
+
+.louis {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background: url('../../content/images/logo_6.png') no-repeat center;
+  background-size: contain;
+}
+
+.pauline {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background: url('../../content/images/logo_5.png') no-repeat center;
+  background-size: contain;
+}
+
+.romain {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background: url('../../content/images/logo_1.png') no-repeat center;
+  background-size: contain;
+}
+
+.julie {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background: url('../../content/images/logo_4.png') no-repeat center;
+  background-size: contain;
+}

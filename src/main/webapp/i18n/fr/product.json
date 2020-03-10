@@ -2,26 +2,27 @@
   "rdlgalaxieApp": {
     "product": {
       "home": {
-        "title": "Products",
-        "createLabel": "Créer un nouveau Product",
-        "createOrEditLabel": "Créer ou éditer un Product",
-        "notFound": "Aucun Product trouvé"
+        "title": "Boutique",
+        "createLabel": "Créer un nouveau Produit",
+        "createOrEditLabel": "Créer ou éditer un Produit",
+        "notFound": "Aucun Produit trouvé"
       },
-      "created": "Un nouveau Product a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Product avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Product avec l'identifiant {{ param }} a été supprimé",
+      "created": "Un nouveau Produit a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Produit avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Produit avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Product {{ id }} ?"
+        "question": "Etes-vous certain de vouloir supprimer le Produit {{ id }} ?"
       },
       "detail": {
-        "title": "Product"
+        "title": "Produit"
       },
-      "name": "Name",
+      "name": "Nom",
       "description": "Description",
-      "price": "Price",
-      "size": "Size",
+      "price": "Prix",
+      "size": "Taille",
+      "sortby": "Trier par",
       "image": "Image",
-      "productCategory": "Product Category"
+      "productCategory": "Catégorie"
     }
   }
 }

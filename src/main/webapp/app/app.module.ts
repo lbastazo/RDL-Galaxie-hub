@@ -8,6 +8,9 @@ import { RdlgalaxieAppRoutingModule } from './app-routing.module';
 import { RdlgalaxieHomeModule } from './home/home.module';
 import { RdlgalaxieEntityModule } from './entities/entity.module';
 import { RdlgalaxieAppBoutiqueModule } from './boutique/boutique.module';
+import { RdlgalaxieAppContactModule } from './contact/contact.module';
+import { RdlgalaxieAppEquipeModule } from './equipe/equipe.module';
+import { RdlgalaxieAppConceptModule } from './concept/concept.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { MainComponent } from './layouts/main/main.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
@@ -23,6 +26,9 @@ import { ErrorComponent } from './layouts/error/error.component';
     RdlgalaxieCoreModule,
     RdlgalaxieHomeModule,
     RdlgalaxieAppBoutiqueModule,
+    RdlgalaxieAppContactModule,
+    RdlgalaxieAppEquipeModule,
+    RdlgalaxieAppConceptModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     RdlgalaxieEntityModule,
     RdlgalaxieAppRoutingModule

@@ -1,7 +1,7 @@
 
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="rdlgalaxieApp.product.home.title">Products</span>
+        <h1 class="text-center" jhiTranslate="rdlgalaxieApp.product.home.title">Products</h1>
         <button *jhiHasAnyAuthority="'ROLE_ADMIN'" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-product" [routerLink]="['/product/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="rdlgalaxieApp.product.home.createLabel">
@@ -15,63 +15,117 @@
     <div class="alert alert-warning" *ngIf="products?.length === 0">
         <span jhiTranslate="rdlgalaxieApp.product.home.notFound">No products found</span>
     </div>
-    <div class="table-responsive" *ngIf="products?.length > 0">
-        <table class="table table-striped" aria-describedby="page-heading">
-            <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="name"><span jhiTranslate="rdlgalaxieApp.product.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="description"><span jhiTranslate="rdlgalaxieApp.product.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="price"><span jhiTranslate="rdlgalaxieApp.product.price">Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="size"><span jhiTranslate="rdlgalaxieApp.product.size">Size</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="image"><span jhiTranslate="rdlgalaxieApp.product.image">Image</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="productCategory.id"><span jhiTranslate="rdlgalaxieApp.product.productCategory">Product Category</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let product of products ;trackBy: trackId">
-                <td><a [routerLink]="['/product', product.id, 'view' ]">{{product.id}}</a></td>
-                <td>{{product.name}}</td>
-                <td>{{product.description}}</td>
-                <td>{{product.price}}</td>
-                <td jhiTranslate="{{'rdlgalaxieApp.Size.' + product.size}}">{{product.size}}</td>
-                <td>
-                    <a *ngIf="product.image" (click)="openFile(product.imageContentType, product.image)">
-                        <img [src]="'data:' + product.imageContentType + ';base64,' + product.image" style="max-height: 30px;" alt="product image"/>
-                    </a>
-                    <span *ngIf="product.image">{{product.imageContentType}}, {{byteSize(product.image)}}</span>
-                </td>
-                <td>
-                    <div *ngIf="product.productCategory">
-                        <a [routerLink]="['/product-category', product.productCategory?.id, 'view' ]" >{{product.productCategory?.id}}</a>
+    <div *ngIf="products">
+
+        <div class="list-group">
+
+            <div class=" mb-2 d-flex justify-content-end align-items-center">
+                <span class="col-1">Filter by name</span>
+                <input type="search" class="form-control" [(ngModel)]="filter">
+
+                <span class="mx-1 col-1" style="text-align:right">Sort by</span>
+
+                <div class="btn-group col-4" role="group" jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+
+                    <button type="button" class="btn btn-light" jhiSortBy="name">
+                        <span jhiTranslate="rdlgalaxieApp.product.name">Name</span>
+                        <fa-icon icon="sort" fixedWidth="true"></fa-icon>
+                    </button>
+
+                    <button type="button" class="btn btn-light" jhiSortBy="price">
+                        <span jhiTranslate="rdlgalaxieApp.product.price">Price</span>
+                        <fa-icon icon="sort" fixedWidth="true"></fa-icon>
+                    </button>
+
+                    <button type="button" class="btn btn-light" jhiSortBy="size">
+                        <span jhiTranslate="rdlgalaxieApp.product.size">Size</span>
+                        <fa-icon icon="sort" fixedWidth="true"></fa-icon>
+                    </button>
+
+                    <button type="button" class="btn btn-light" jhiSortBy="productCategory.id">
+                        <span  jhiTranslate="rdlgalaxieApp.product.productCategory">Product Category</span>
+                        <fa-icon icon="sort" fixedWidth="true"></fa-icon>
+                    </button>
+                </div>
+            </div>
+        </div><br/>
+        <!-- Ajout 'view' dans le <a> -->
+            <a [routerLink]="['../product', product.id, 'view' ]"
+               class="list-group-item list-group-item-action flex-column align-items-start"
+               *ngFor="let product of products | pureFilter:filter:'name' ; trackBy: trackId">
+                <div class="row">
+                    <div class="col-2 col-xs-12">
+                        <a *ngIf="product.image" (click)="openFile(product.imageContentType, product.image)">
+                            <img [src]="'data:' + product.imageContentType + ';base64,' + product.image" style="max-height:100px;" alt="product image"/>
+                        </a>
                     </div>
-                </td>
-                <td class="text-right">
-                    <div class="btn-group">
-                        <button type="submit"
-                                [routerLink]="['/product', product.id, 'view' ]"
-                                class="btn btn-info btn-sm">
-                            <fa-icon [icon]="'eye'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="submit"
-                                [routerLink]="['/product', product.id, 'edit']"
-                                class="btn btn-primary btn-sm">
-                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="submit" (click)="delete(product)"
-                                class="btn btn-danger btn-sm">
-                            <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                        </button>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+
+                    <div class="col col-xs-12">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="mb-1">{{product.name}} </h5>
+                            <small *ngIf="product.productCategory">
+                                <a [routerLink]="['../product-category',  product.productCategory?.id ]" >
+                                    Category: {{product.productCategory?.id}}
+                                </a>
+                            </small>
+                        </div>
+                        <small class="mb-1">{{product.description}}</small>
+                        <p class="mb-1"> {{product.price | currency:'Cosmos'}} </p>
+                        <small>
+                            <span jhiTranslate="rdlgalaxieApp.product.size">Size :</span>
+                            <span jhiTranslate="{{'rdlgalaxieApp.Size.' +   product.size}}">{{product.size}}</span>
+                        </small>
+                        <!-- Ajout div pour view -->
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button type="submit" [routerLink]="['/product', product.id, 'view' ]"
+                                        class="btn btn-info btn-sm" style="margin:5px">
+                                    <fa-icon [icon]="'eye'"></fa-icon>
+                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                                </button>
+                            </div>
+
+                            <div class="col-xs-12">
+                                <button type="submit"
+                                        [routerLink]="[]"
+                                        replaceUrl="true"
+                                        queryParamsHandling="merge"
+                                        class="btn btn-warning btn-sm" style="margin:5px;"> <!-- FINIR DE REMPLIR LE CHEMIN QUAND PANIER OK -->
+                                    <fa-icon [icon]="'shopping-basket'"></fa-icon>
+                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.addcart">Add to cart</span>
+                                </button>
+                            </div>
+                            <!--Fin Ajout -->
+
+                            <div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="col-xs-12">
+                                <button type="submit"
+                                        [routerLink]="['/product', product.id, 'edit']"
+                                        replaceUrl="true"
+                                        queryParamsHandling="merge"
+                                        class="btn btn-primary btn-sm" style="margin:5px">
+                                    <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                                </button>
+                            </div>
+                            <div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="col-xs-12">
+                                <button type="submit" (click)="delete(product)"
+                                        [routerLink]="['/',  { outlets: { popup: 'product/'+ product.id + '/delete'} }]"
+                                        replaceUrl="true"
+                                        queryParamsHandling="merge"
+                                        class="btn btn-danger btn-sm" style="margin:5px"> <!-- Ajout (click) code -->
+                                    <fa-icon [icon]="'times'"></fa-icon>
+                                    <span class="d-none d-md-inline"
+                                          jhiTranslate="entity.action.delete">Delete</span>
+                                </button>
+                            </div>
+                        </div>
+                </div>
+            </a>
+        </div>
     </div>
+
+
     <div *ngIf="products?.length > 0">
         <div class="row justify-content-center">
             <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>

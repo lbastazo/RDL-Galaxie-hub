@@ -5,6 +5,9 @@
     "menu": {
       "home": "首頁",
       "boutique": "Boutique",
+      "contact": "Contact",
+      "equipe": "Equipe",
+      "concept": "Concept",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "實體",

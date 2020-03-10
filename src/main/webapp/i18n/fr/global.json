@@ -5,6 +5,9 @@
     "menu": {
       "home": "Accueil",
       "boutique": "Boutique",
+      "contact": "Contact",
+      "equipe": "L'équipe",
+      "concept": "Le concept",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entités",
@@ -106,7 +109,8 @@
       "delete": "Supprimer",
       "open": "Ouvrir",
       "save": "Sauvegarder",
-      "view": "Voir"
+      "view": "Voir",
+      "addcart": "Ajouter au panier"
     },
     "detail": {
       "field": "Champs",
