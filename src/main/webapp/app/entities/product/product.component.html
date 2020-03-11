@@ -1,127 +1,139 @@
-
-<div>
-    <h2 id="page-heading">
-        <h1 class="text-center" jhiTranslate="rdlgalaxieApp.product.home.title">Products</h1>
+<div class="card jh-card">
+    <div class="row">
         <button *jhiHasAnyAuthority="'ROLE_ADMIN'" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-product" [routerLink]="['/product/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="rdlgalaxieApp.product.home.createLabel">
-            Create a new Product
-            </span>
+                    Create a new Product
+                    </span>
         </button>
-    </h2>
-    <jhi-alert-error></jhi-alert-error>
-    <jhi-alert></jhi-alert>
-    <br/>
-    <div class="alert alert-warning" *ngIf="products?.length === 0">
-        <span jhiTranslate="rdlgalaxieApp.product.home.notFound">No products found</span>
     </div>
-    <div *ngIf="products">
 
-        <div class="list-group">
+    <div>
 
-            <div class=" mb-2 d-flex justify-content-end align-items-center">
-                <span class="col-1">Filter by name</span>
-                <input type="search" class="form-control" [(ngModel)]="filter">
+        <h2 id="page-heading">
+            <h1 class="text-center" jhiTranslate="rdlgalaxieApp.product.home.title">Products</h1>
+        </h2>
 
-                <span class="mx-1 col-1" style="text-align:right">Sort by</span>
+        <jhi-alert-error></jhi-alert-error>
+        <jhi-alert></jhi-alert>
+        <br/>
 
-                <div class="btn-group col-4" role="group" jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+        <div class="alert alert-warning" *ngIf="products?.length === 0">
+            <span jhiTranslate="rdlgalaxieApp.product.home.notFound">No products found</span>
+        </div>
 
-                    <button type="button" class="btn btn-light" jhiSortBy="name">
-                        <span jhiTranslate="rdlgalaxieApp.product.name">Name</span>
-                        <fa-icon icon="sort" fixedWidth="true"></fa-icon>
-                    </button>
+        <div *ngIf="products">
 
-                    <button type="button" class="btn btn-light" jhiSortBy="price">
-                        <span jhiTranslate="rdlgalaxieApp.product.price">Price</span>
-                        <fa-icon icon="sort" fixedWidth="true"></fa-icon>
-                    </button>
+            <div class="list-group">
 
-                    <button type="button" class="btn btn-light" jhiSortBy="size">
-                        <span jhiTranslate="rdlgalaxieApp.product.size">Size</span>
-                        <fa-icon icon="sort" fixedWidth="true"></fa-icon>
-                    </button>
+                <div class=" mb-2 d-flex justify-content-end align-items-center">
+                    <span class="col-1">Filter by name</span>
+                    <input type="search" class="form-control" [(ngModel)]="filter">
 
-                    <button type="button" class="btn btn-light" jhiSortBy="productCategory.id">
-                        <span  jhiTranslate="rdlgalaxieApp.product.productCategory">Product Category</span>
-                        <fa-icon icon="sort" fixedWidth="true"></fa-icon>
-                    </button>
+                    <span class="mx-1 col-1" style="text-align:right">Sort by</span>
+
+                    <div class="btn-group col-4" role="group" jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+
+                        <button type="button" class="btn btn-light" jhiSortBy="name">
+                            <span jhiTranslate="rdlgalaxieApp.product.name">Name</span>
+                            <fa-icon icon="sort" fixedWidth="true"></fa-icon>
+                        </button>
+
+                        <button type="button" class="btn btn-light" jhiSortBy="price">
+                            <span jhiTranslate="rdlgalaxieApp.product.price">Price</span>
+                            <fa-icon icon="sort" fixedWidth="true"></fa-icon>
+                        </button>
+
+                        <button type="button" class="btn btn-light" jhiSortBy="size">
+                            <span jhiTranslate="rdlgalaxieApp.product.size">Size</span>
+                            <fa-icon icon="sort" fixedWidth="true"></fa-icon>
+                        </button>
+
+                        <button type="button" class="btn btn-light" jhiSortBy="productCategory.id">
+                            <span  jhiTranslate="rdlgalaxieApp.product.productCategory">Product Category</span>
+                            <fa-icon icon="sort" fixedWidth="true"></fa-icon>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div><br/>
-        <!-- Ajout 'view' dans le <a> -->
-            <a [routerLink]="['../product', product.id, 'view' ]"
-               class="list-group-item list-group-item-action flex-column align-items-start"
-               *ngFor="let product of products | pureFilter:filter:'name' ; trackBy: trackId">
-                <div class="row">
-                    <div class="col-2 col-xs-12">
-                        <a *ngIf="product.image" (click)="openFile(product.imageContentType, product.image)">
-                            <img [src]="'data:' + product.imageContentType + ';base64,' + product.image" style="max-height:100px;" alt="product image"/>
-                        </a>
-                    </div>
+            <br/>
+            <!-- Ajout 'view' dans le <a> -->
+                <a [routerLink]="['../product', product.id, 'view' ]"
+                   class="list-group-item list-group-item-action flex-column align-items-start"
+                   *ngFor="let product of products | pureFilter:filter:'name' ; trackBy: trackId">
+                    <div class="row">
+                        <div class="col-2 col-xs-12">
+                            <a *ngIf="product.image" (click)="openFile(product.imageContentType, product.image)">
+                                <img [src]="'data:' + product.imageContentType + ';base64,' + product.image" style="max-height:150px;" alt="product image"/>
+                            </a>
+                        </div>
 
-                    <div class="col col-xs-12">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="mb-1">{{product.name}} </h5>
-                            <small *ngIf="product.productCategory">
-                                <a [routerLink]="['../product-category',  product.productCategory?.id ]" >
-                                    Category: {{product.productCategory?.id}}
-                                </a>
+                        <div class="col col-xs-12">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="mb-1">{{product.name}} </h5>
+                                <small *ngIf="product.productCategory">
+                                    <a [routerLink]="['../product-category',  product.productCategory?.id ]" >
+                                        Category: {{product.productCategory?.id}}
+                                    </a>
+                                </small>
+                            </div>
+                            <small class="mb-1">{{product.description}}</small>
+
+                            <p class="mb-1"> {{product.price | currency:'Cosmos'}} </p>
+
+                            <small>
+                                <span jhiTranslate="rdlgalaxieApp.product.size">Size :</span>
+                                <span jhiTranslate="{{'rdlgalaxieApp.Size.' +   product.size}}">{{product.size}}</span>
                             </small>
-                        </div>
-                        <small class="mb-1">{{product.description}}</small>
-                        <p class="mb-1"> {{product.price | currency:'Cosmos'}} </p>
-                        <small>
-                            <span jhiTranslate="rdlgalaxieApp.product.size">Size :</span>
-                            <span jhiTranslate="{{'rdlgalaxieApp.Size.' +   product.size}}">{{product.size}}</span>
-                        </small>
-                        <!-- Ajout div pour view -->
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <button type="submit" [routerLink]="['/product', product.id, 'view' ]"
-                                        class="btn btn-info btn-sm" style="margin:5px">
-                                    <fa-icon [icon]="'eye'"></fa-icon>
-                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                                </button>
-                            </div>
+                            <!-- Ajout div pour view -->
 
-                            <div class="col-xs-12">
-                                <button type="submit"
-                                        [routerLink]="[]"
-                                        replaceUrl="true"
-                                        queryParamsHandling="merge"
-                                        class="btn btn-warning btn-sm" style="margin:5px;"> <!-- FINIR DE REMPLIR LE CHEMIN QUAND PANIER OK -->
-                                    <fa-icon [icon]="'shopping-basket'"></fa-icon>
-                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.addcart">Add to cart</span>
-                                </button>
-                            </div>
-                            <!--Fin Ajout -->
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <button type="submit" [routerLink]="['/product', product.id, 'view' ]"
+                                            class="btn btn-info btn-sm" style="margin:5px">
+                                        <fa-icon [icon]="'eye'"></fa-icon>
+                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                                    </button>
+                                </div>
 
-                            <div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="col-xs-12">
-                                <button type="submit"
-                                        [routerLink]="['/product', product.id, 'edit']"
-                                        replaceUrl="true"
-                                        queryParamsHandling="merge"
-                                        class="btn btn-primary btn-sm" style="margin:5px">
-                                    <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                                </button>
-                            </div>
-                            <div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="col-xs-12">
-                                <button type="submit" (click)="delete(product)"
-                                        [routerLink]="['/',  { outlets: { popup: 'product/'+ product.id + '/delete'} }]"
-                                        replaceUrl="true"
-                                        queryParamsHandling="merge"
-                                        class="btn btn-danger btn-sm" style="margin:5px"> <!-- Ajout (click) code -->
-                                    <fa-icon [icon]="'times'"></fa-icon>
-                                    <span class="d-none d-md-inline"
-                                          jhiTranslate="entity.action.delete">Delete</span>
-                                </button>
+                                <div class="col-xs-12">
+                                    <button type="submit"
+                                            [routerLink]="[]"
+                                            replaceUrl="true"
+                                            queryParamsHandling="merge"
+                                            class="btn btn-warning btn-sm" style="margin:5px;"> <!-- FINIR DE REMPLIR LE CHEMIN QUAND PANIER OK -->
+                                        <fa-icon [icon]="'shopping-basket'"></fa-icon>
+                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.addcart">Add to cart</span>
+                                    </button>
+                                </div>
+                                <!--Fin Ajout -->
+
+                                <div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="col-xs-12">
+                                    <button type="submit"
+                                            [routerLink]="['/product', product.id, 'edit']"
+                                            replaceUrl="true"
+                                            queryParamsHandling="merge"
+                                            class="btn btn-primary btn-sm" style="margin:5px">
+                                        <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                                    </button>
+                                </div>
+                                <div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="col-xs-12">
+                                    <button type="submit" (click)="delete(product)"
+                                            [routerLink]="['/',  { outlets: { popup: 'product/'+ product.id + '/delete'} }]"
+                                            replaceUrl="true"
+                                            queryParamsHandling="merge"
+                                            class="btn btn-danger btn-sm" style="margin:5px"> <!-- Ajout (click) code -->
+                                        <fa-icon [icon]="'times'"></fa-icon>
+                                        <span class="d-none d-md-inline"
+                                              jhiTranslate="entity.action.delete">Delete</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                </div>
-            </a>
+                    </div>
+                </a>
         </div>
     </div>
 

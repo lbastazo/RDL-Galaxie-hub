@@ -2,6 +2,13 @@
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 
+/* ajout code personnalisation police sous-titre */
+@font-face {
+  /* Définition d'une nouvelle police nommée Major Snafu */
+  font-family: 'Major Snafu';
+  src: url('major_shift.ttf') format('truetype');
+}
+
 /* ==============================================================
 Bootstrap tweaks
 ===============================================================*/
@@ -129,7 +136,7 @@ FOOTER CODE PAULINE
   background-color: #1b2465;
 }
 
-/* ancien bouts de code de Pauline, mis de côté pour nouvelle mise en page mais FONCTIONNELS.
+/* anciens bouts de code de Pauline, mis de côté pour nouvelle mise en page mais FONCTIONNELS.
 .wrapper {
    color: white;
    padding: 10px 0px;
@@ -161,21 +168,26 @@ FOOTER CODE PAULINE
 */
 
 /* ==========================================================================
-END FOOTER
+HEADER
 ========================================================================== */
 
 /* Header/Blog Title image */
-.headertest {
+#headertest {
   width: 100%;
-  height: 160px;
-  background: url('/../../content/images/bg_header.png') top;
+  height-max: 160px;
+  background: url('/../../content/images/bg_header2.png') no-repeat;
 }
 
-/* Header/Blog Title écriture, mais toutes les écritures ne marchent pas forcément... */
-.headertest h1 {
-  font-family: Quantum;
+/* Header/Blog Title écriture */
+#headertest h1 {
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
   color: white;
+  padding-top: 40px;
+  font-family: 'Major Snafu', Verdana, Arial, serif;
   text-shadow: #8e88eb 0.1em 0.1em 0.2em;
+  font-size: 3em;
 }
 
 .header h1 {
@@ -516,4 +528,59 @@ CODE PRESENTATION EQUIPE
   height: 200px;
   background: url('../../content/images/logo_4.png') no-repeat center;
   background-size: contain;
+}
+/* ==========================================================================
+CODE BOUTTON STYLE LOGIN
+========================================================================== */
+
+/* Btn-primary login CREATE ACCOUNT style */
+.btn-primary.btnlog {
+  font-family: 'Major Snafu', Verdana, Arial, serif;
+  color: #fff;
+  background-color: #545c9d;
+  border-color: white;
+  vertical-align: auto;
+  font-size: 20px;
+  padding: 10px 25px;
+}
+.btn-primary.btnlog:hover {
+  color: #fff;
+  background-color: #8d92d8;
+  border-color: white;
+  padding: 10px 25px;
+}
+/* Btn-primary login SIGN IN style */
+.btn-primary.btnsig {
+  font-family: 'Major Snafu', Verdana, Arial, serif;
+  color: #fff;
+  background-color: #1b2465;
+  border-color: white;
+  font-size: 20px;
+  padding: 10px 25px;
+}
+
+.btn-primary.btnsig:hover {
+  color: #fff;
+  background-color: #8d92d8;
+  border-color: white;
+  padding: 10px 25px;
+}
+/* fin btn-primary login style */
+
+/* ==========================================================================
+RUBRIQUE pour se connecter
+========================================================================== */
+#decalgauche {
+  padding-left: 21em;
+}
+
+/* ==========================================================================
+ID pour personnaliser text
+========================================================================== */
+
+#spacetext {
+  font-family: 'Major Snafu', Verdana, Arial, serif;
+  text-shadow: #281a6f 0.1em 0.1em 0.2em;
+  color: white;
+  font-size: 1.3em;
 }

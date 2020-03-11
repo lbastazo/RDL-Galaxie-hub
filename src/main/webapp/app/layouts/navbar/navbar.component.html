@@ -1,5 +1,5 @@
-<div class="headertest">
-    <!-- <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()"><b><h1 class="display-3" jhiTranslate="home.title">Les Radins de la Galaxie</h1></b></a> -->
+<div id="headertest" class="row justify-content-center">
+    <a class="navbar-brand" routerLink="/" (click)="collapseNavbar()"><h1 jhiTranslate="home.title">Les Radins de la Galaxie</h1></a>
 </div>
 
 <nav class="navbar navbar-dark navbar-expand-md">
@@ -24,18 +24,18 @@
                 </a>
             </li>
 
-            
+
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="equipe" (click)="collapseNavbar()">
-                    <fa-icon [icon]="hand-spock-o" [fixedWidth]="true"></fa-icon>&nbsp;
+                    <fa-icon icon="rocket" [fixedWidth]="true"></fa-icon>&nbsp;
                     <span jhiTranslate="global.menu.equipe">Equipe</span>
                 </a>
             </li>
-            
+
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="concept" (click)="collapseNavbar()">
-                    <fa-icon [icon]="hand-spock-o" [fixedWidth]="true"></fa-icon>&nbsp;
-                    <span jhiTranslate="global.menu.concept">Concept</span>
+                    <fa-icon icon="meteor" [fixedWidth]="true"></fa-icon>&nbsp;
+                    <span jhiTranslate="global.menu.concept">A propos</span>
                 </a>
             </li>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->

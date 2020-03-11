@@ -2,48 +2,49 @@
 </br> <!-- Permet d'avoir un espace entre le contenu et le footer -->
 <footer class="footer">
     <div class="container-fluid">
-        <div class="row text-center justify-content-center">
-            <div class="col-md-2 mt-3 mb-1">
+        <div class="row text-center justify-content-center pt-3" style="height:40px">
+            <div class="col-md-2">
                 <h6 class="text-uppercase font-weight-bold">
                     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" jhiTranslate="global.menu.home">Accueil</a>
                 </h6>
             </div>
 
-            <div class="col-md-2 mt-3 mb-1">
+            <div class="col-md-2">
                 <h6 class="text-uppercase font-weight-bold">
                     <a routerLink="product" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" jhiTranslate="global.menu.boutique">Boutique</a>
                 </h6>
             </div>
 
-            <div class="col-md-2 mt-3 mb-1">
+            <div class="col-md-2">
                 <h6 class="text-uppercase font-weight-bold">
-                    <a href="#!">L'équipe</a>
+                    <a routerLink="equipe" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" jhiTranslate="global.menu.equipe">L'équipe</a>
                 </h6>
             </div>
 
-            <div class="col-md-2 mt-3 mb-1">
+            <div class="col-md-2">
                 <h6 class="text-uppercase font-weight-bold">
-                    <a href="#!">A propos</a>
+                    <a routerLink="concept" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" jhiTranslate="global.menu.concept">A propos</a>
                 </h6>
             </div>
 
-            <div class="col-md-2 mt-3 mb-1">
+            <div class="col-md-2">
                 <h6 class="text-uppercase font-weight-bold">
                     <a routerLink="contact" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" jhiTranslate="global.menu.contact">Contact</a>
                 </h6>
             </div>
         </div>
 
-        <hr width="75%" color="white">
+        <div class="row text-center d-flex justify-content-center">
+            <hr width="75%" color="white"> <!-- Ligne blanche -->
+        </div>
 
-        <div class="row">
+        <div class="row text-center d-flex justify-content-center">
             <div class="col-md-12">
-                <div style="text-align:center" class="fa">
-                    <a href="#"><img width="50px" class="pr-2" src="/../content/images/fb-icon.png"></a>
-                    <a href="#"><img width="50px" class="pr-2" src="/../content/images/twitter-icon.png"></a>
-                    <a href="#"><img width="50px" class="pr-2" src="/../content/images/insta-icon.png"></a>
-                    <a href="#"><img width="50px" class="pr-2" src="/../content/images/linkedin-icon.png"></a>
-                </div>
+                <a href="#"><img width="60px" class="pr-2" src="/../content/images/fb-icon.png"></a>
+                <a href="#"><img width="60px" class="pr-2" src="/../content/images/twitter-icon.png"></a>
+                <a href="#"><img width="60px" class="pr-2" src="/../content/images/insta-icon.png"></a>
+                <a href="#"><img width="60px" class="pr-2" src="/../content/images/linkedin-icon.png"></a>
+
             </div>
         </div>
         <div class="row text-center d-flex justify-content-center pt-4" style="background-color:#324191">

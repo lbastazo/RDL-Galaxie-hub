@@ -7,17 +7,17 @@
       "boutique": "Boutique",
       "contact": "Contact",
       "equipe": "L'équipe",
-      "concept": "Le concept",
+      "concept": "A propos",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entités",
         "product": "Product",
-        "productCategory": "Product Category",
-        "customer": "Customer",
-        "productOrder": "Product Order",
+        "productCategory": "Catégorie de produit",
+        "customer": "Client",
+        "productOrder": "Commande produit",
         "orderItem": "Order Item",
         "invoice": "Invoice",
-        "shipment": "Shipment",
+        "shipment": "Livraison",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
