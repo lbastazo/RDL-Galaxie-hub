@@ -476,12 +476,12 @@ CODE PRESENTATION PRODUITS PAULINE
 .bible {
   justify-content: center;
   align-items: center;
-  height: 150 px;
+  height: auto;
   width: 219px;
 }
 
 .bible img {
-  height: 150 px;
+  height: auto;
   width: 219px;
 }
 
@@ -540,14 +540,14 @@ CODE BOUTTON STYLE LOGIN
   background-color: #545c9d;
   border-color: white;
   vertical-align: auto;
-  font-size: 20px;
-  padding: 10px 25px;
+  font-size: 1.3em;
+  padding: 10px 5px;
 }
 .btn-primary.btnlog:hover {
   color: #fff;
   background-color: #8d92d8;
   border-color: white;
-  padding: 10px 25px;
+  padding: 10px 5px;
 }
 /* Btn-primary login SIGN IN style */
 .btn-primary.btnsig {
@@ -555,15 +555,15 @@ CODE BOUTTON STYLE LOGIN
   color: #fff;
   background-color: #1b2465;
   border-color: white;
-  font-size: 20px;
-  padding: 10px 25px;
+  font-size: 1.3em;
+  padding: 10px 5px;
 }
 
 .btn-primary.btnsig:hover {
   color: #fff;
   background-color: #8d92d8;
   border-color: white;
-  padding: 10px 25px;
+  padding: 10px 5px;
 }
 /* fin btn-primary login style */
 

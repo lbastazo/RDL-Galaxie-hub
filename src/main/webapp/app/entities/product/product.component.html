@@ -64,7 +64,7 @@
                     <div class="row">
                         <div class="col-2 col-xs-12">
                             <a *ngIf="product.image" (click)="openFile(product.imageContentType, product.image)">
-                                <img [src]="'data:' + product.imageContentType + ';base64,' + product.image" style="max-height:150px;" alt="product image"/>
+                                <img [src]="'data:' + product.imageContentType + ';base64,' + product.image" style="max-height:100px;" alt="product image"/>
                             </a>
                         </div>
 
