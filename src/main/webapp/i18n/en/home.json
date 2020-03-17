@@ -3,6 +3,14 @@
     "title": "Misers of the Galaxy",
     "titlehome": "Dear stingy, grigous and other flu-sous, welcome !",
     "subtitle": "Are you tired of spending 3 hours getting lost from website to website, eyeing articles that are far too expensive for what they are? <br/>Same for us ! That's why our site offers you excellence, and will satisfy even the stingest person of the whole galaxy.<br/>Cosmically yours, The Team.",
+    "subtitlecategory": {
+      "title": "Product Category",
+      "bonnets": "Caps",
+      "pulls": "Sweaters",
+      "chaussettes": "Socks",
+      "mugs": "Mugs",
+      "bibleCosmique": "Cosmic Bible"
+    },
     "logged": {
       "message": "You are logged in as user \"{{username}}\"."
     },
