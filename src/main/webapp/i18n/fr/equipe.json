@@ -3,7 +3,7 @@
     "title": "Présentation de l'équipe",
     "subtitle": "",
     "content": "",
-    "contenu1": "Une équipe de choc se relaie jour et nuit afin de dénicher les meilleurs produits à des prix imbattables uniquement pour vous ! <br/><br/>\n Cette équipe est composée des meilleurs éléments issus de notre communauté cosmique.\n            Ils suivent minutieusement tous les commandements des Radins de la Galaxie avec à leur tête, notre lumière dans cette pénombre : Lorène notre gourou cosmique.\n            Sous la surveillance de notre maîtresse cosmique, Louis, Pauline, Romain et Julie ont suivi un entraînement d’élite afin de devenir les meilleurs radins que cette galaxie n’a jamais connue.",
+    "contenu1": "<b>Une équipe de choc se relaie jour et nuit afin de dénicher les meilleurs produits à des prix imbattables uniquement pour vous !</b> <br/><br/>\n Cette équipe est composée des meilleurs éléments issus de notre Communauté Cosmique.\n            Ils suivent minutieusement tous les commandements des Radins de la Galaxie avec à leur tête, notre lumière dans cette pénombre : Lorène notre gourou cosmique.\n            Sous la surveillance de notre maîtresse cosmique, Louis, Pauline, Romain et Julie ont suivi un entraînement d’élite afin de devenir les meilleurs radins que cette galaxie n’a jamais connue.",
     "contenu2": "Vous souhaitez nous rejoindre et profiter des meilleurs bon plans de la galaxie ? <a routerLink=\"contact\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{ exact: true }\"><b>Contactez-nous</b></a> !"
   }
 }

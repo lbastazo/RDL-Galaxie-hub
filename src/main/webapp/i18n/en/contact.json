@@ -2,6 +2,12 @@
   "contact": {
     "title": "Contact",
     "subtitle": "",
-    "content": ""
+    "content": "",
+    "firstname": "First name :",
+    "firstname-content": "Enter first name...",
+    "lastname": "Last name :",
+    "lastname-content": "Enter last name...",
+    "subject": "Subject :",
+    "submit": "Submit"
   }
 }

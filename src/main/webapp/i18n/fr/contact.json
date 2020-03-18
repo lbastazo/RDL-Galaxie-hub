@@ -2,6 +2,12 @@
   "contact": {
     "title": "Contact",
     "subtitle": "",
-    "content": ""
+    "content": "",
+    "firstname": "Prénom :",
+    "firstname-content": "Inscrivez votre prénom ici..",
+    "lastname": "Nom :",
+    "lastname-content": "Inscrivez votre nom ici...",
+    "subject": "Message :",
+    "submit": "Envoyer"
   }
 }

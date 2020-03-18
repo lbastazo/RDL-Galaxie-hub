@@ -2,7 +2,7 @@
   "rdlgalaxieApp": {
     "product": {
       "home": {
-        "title": "Products",
+        "title": "Cosmic Store",
         "createLabel": "Create a new Product",
         "createOrEditLabel": "Create or edit a Product",
         "notFound": "No Products found"
