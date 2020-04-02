@@ -7,7 +7,6 @@ import { RdlgalaxieCoreModule } from 'app/core/core.module';
 import { RdlgalaxieAppRoutingModule } from './app-routing.module';
 import { RdlgalaxieHomeModule } from './home/home.module';
 import { RdlgalaxieEntityModule } from './entities/entity.module';
-import { RdlgalaxieAppBoutiqueModule } from './boutique/boutique.module';
 import { RdlgalaxieAppContactModule } from './contact/contact.module';
 import { RdlgalaxieAppEquipeModule } from './equipe/equipe.module';
 import { RdlgalaxieAppConceptModule } from './concept/concept.module';
@@ -25,7 +24,6 @@ import { ErrorComponent } from './layouts/error/error.component';
     RdlgalaxieSharedModule,
     RdlgalaxieCoreModule,
     RdlgalaxieHomeModule,
-    RdlgalaxieAppBoutiqueModule,
     RdlgalaxieAppContactModule,
     RdlgalaxieAppEquipeModule,
     RdlgalaxieAppConceptModule,
