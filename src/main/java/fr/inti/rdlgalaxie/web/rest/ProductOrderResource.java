@@ -1,5 +1,7 @@
 package fr.inti.rdlgalaxie.web.rest;
 
+import fr.inti.rdlgalaxie.domain.OrderItem;
+import fr.inti.rdlgalaxie.domain.Product;
 import fr.inti.rdlgalaxie.domain.ProductOrder;
 import fr.inti.rdlgalaxie.service.ProductOrderService;
 import fr.inti.rdlgalaxie.web.rest.errors.BadRequestAlertException;
@@ -13,12 +15,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import java.io.Console;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -82,6 +85,18 @@ public class ProductOrderResource {
         ProductOrder result = productOrderService.save(productOrder);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, productOrder.getId().toString()))
+            .body(result);
+    }
+
+    /**
+        requete pour ajouter un objet au panier
+     */
+    @PostMapping("/product-orders/ajout-panier")
+    public ResponseEntity<OrderItem> addItem(@RequestBody Product product) {
+    	// Appel du PanierService
+    	OrderItem result = productOrderService.ajoutPanier(product);
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createAlert(applicationName, "item-added", ENTITY_NAME))
             .body(result);
     }
 
