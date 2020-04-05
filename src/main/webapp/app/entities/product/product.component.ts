@@ -6,10 +6,15 @@ import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { IProduct } from 'app/shared/model/product.model';
+import { IOrderItem } from 'app/shared/model/order-item.model';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { ProductService } from './product.service';
 import { ProductDeleteDialogComponent } from './product-delete-dialog.component';
+// Import des services Account et User
+import { AccountService } from 'app/core/auth/account.service';
+import { CustomerService } from 'app/entities/customer/customer.service';
+import { ProductOrderService } from 'app/entities/product-order/product-order.service';
 
 @Component({
   selector: 'jhi-product',
@@ -24,6 +29,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
+  orderItem: IOrderItem | null = null;
 
   constructor(
     protected productService: ProductService,
@@ -31,7 +37,11 @@ export class ProductComponent implements OnInit, OnDestroy {
     protected dataUtils: JhiDataUtils,
     protected router: Router,
     protected eventManager: JhiEventManager,
-    protected modalService: NgbModal
+    protected modalService: NgbModal,
+    /* Ajout des services Account et Customer */
+    private accountService: AccountService,
+    private customerService: CustomerService,
+    private productOrderService: ProductOrderService
   ) {}
 
   loadPage(page?: number): void {
@@ -120,5 +130,11 @@ export class ProductComponent implements OnInit, OnDestroy {
       }
     });
     this.loadPage();
+  }
+
+  ajoutPanier(product: IProduct): void {
+    this.productOrderService.ajoutPanier(product).subscribe(res => {
+      this.orderItem = res.body;
+    });
   }
 }
