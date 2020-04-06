@@ -1,7 +1,6 @@
 package fr.inti.rdlgalaxie.web.rest;
 
 import fr.inti.rdlgalaxie.RdlgalaxieApp;
-import fr.inti.rdlgalaxie.domain.OrderItem;
 import fr.inti.rdlgalaxie.repository.OrderItemRepository;
 import fr.inti.rdlgalaxie.service.OrderItemService;
 import fr.inti.rdlgalaxie.web.rest.errors.ExceptionTranslator;
@@ -28,6 +27,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import fr.inti.rdlgalaxie.domain.OrderItem;
 import fr.inti.rdlgalaxie.domain.enumeration.OrderItemStatus;
 /**
  * Integration tests for the {@link OrderItemResource} REST controller.

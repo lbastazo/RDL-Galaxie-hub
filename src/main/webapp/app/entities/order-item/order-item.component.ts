@@ -10,12 +10,14 @@ import { IOrderItem } from 'app/shared/model/order-item.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { OrderItemService } from './order-item.service';
 import { OrderItemDeleteDialogComponent } from './order-item-delete-dialog.component';
+import { AccountService } from 'app/core/auth/account.service';
 
 @Component({
   selector: 'jhi-order-item',
   templateUrl: './order-item.component.html'
 })
 export class OrderItemComponent implements OnInit, OnDestroy {
+  currentAccount: any;
   orderItems?: IOrderItem[];
   eventSubscriber?: Subscription;
   totalItems = 0;
@@ -30,7 +32,8 @@ export class OrderItemComponent implements OnInit, OnDestroy {
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager,
-    protected modalService: NgbModal
+    protected modalService: NgbModal,
+    protected accountService: AccountService
   ) {}
 
   loadPage(page?: number): void {
@@ -54,6 +57,9 @@ export class OrderItemComponent implements OnInit, OnDestroy {
       this.predicate = data.pagingParams.predicate;
       this.ngbPaginationPage = data.pagingParams.page;
       this.loadPage();
+    });
+    this.accountService.identity().subscribe(account => {
+      this.currentAccount = account;
     });
     this.registerChangeInOrderItems();
   }

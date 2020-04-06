@@ -2,7 +2,6 @@ package fr.inti.rdlgalaxie.web.rest;
 
 import fr.inti.rdlgalaxie.RdlgalaxieApp;
 import fr.inti.rdlgalaxie.domain.ProductOrder;
-import fr.inti.rdlgalaxie.repository.ProductOrderRepository;
 import fr.inti.rdlgalaxie.service.ProductOrderService;
 import fr.inti.rdlgalaxie.web.rest.errors.ExceptionTranslator;
 
@@ -30,6 +29,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import fr.inti.rdlgalaxie.domain.enumeration.OrderStatus;
+import fr.inti.rdlgalaxie.repository.ProductOrderRepository;
 /**
  * Integration tests for the {@link ProductOrderResource} REST controller.
  */
