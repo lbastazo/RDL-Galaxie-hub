@@ -58,7 +58,7 @@
             </div>
             <br/>
             <!-- Ajout 'view' dans le <a> -->
-                <a [routerLink]="['../product', product.id, 'view' ]"
+                <a id="notwhite" [routerLink]="['../product', product.id, 'view' ]"
                    class="list-group-item list-group-item-action flex-column align-items-start"
                    *ngFor="let product of products | pureFilter:filter:'name' ; trackBy: trackId">
                     <div class="row">

@@ -1,12 +1,22 @@
 <div class="card jh-card">
-    <h2 id="page-heading">
-        <span jhiTranslate="rdlgalaxieApp.productOrder.home.title">Product Orders</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-product-order" [routerLink]="['/product-order/new']">
+    <div class="row">
+        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-product-order" [routerLink]="['/product-order/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="rdlgalaxieApp.productOrder.home.createLabel">
             Create a new Product Order
             </span>
         </button>
+    </div>
+        <div class="row">
+            <button *jhiHasAnyAuthority="'ROLE_ADMIN'" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-product" [routerLink]="['/product/new']">
+                <fa-icon [icon]="'plus'"></fa-icon>
+                <span  jhiTranslate="rdlgalaxieApp.product.home.createLabel">
+                    Create a new Product
+                    </span>
+            </button>
+        </div>
+    <h2 id="page-heading">
+        <h1 class="text-center" jhiTranslate="rdlgalaxieApp.productOrder.home.title">Product Orders</h1>
     </h2>
     <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
@@ -28,13 +38,13 @@
             </thead>
             <tbody>
             <tr *ngFor="let productOrder of productOrders ;trackBy: trackId">
-                <td><a [routerLink]="['/product-order', productOrder.id, 'view' ]">{{productOrder.id}}</a></td>
+                <td><a id="notwhite" [routerLink]="['/product-order', productOrder.id, 'view' ]">{{productOrder.id}}</a></td>
                 <td>{{productOrder.placedDate | date:'medium'}}</td>
                 <td jhiTranslate="{{'rdlgalaxieApp.OrderStatus.' + productOrder.status}}">{{productOrder.status}}</td>
                 <td>{{productOrder.code}}</td>
                 <td>
                     <div *ngIf="productOrder.customer">
-                        <a [routerLink]="['/customer', productOrder.customer?.id, 'view' ]" >{{productOrder.customer?.id}}</a>
+                        <a id="notwhite" [routerLink]="['/customer', productOrder.customer?.id, 'view' ]" >{{productOrder.customer?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">

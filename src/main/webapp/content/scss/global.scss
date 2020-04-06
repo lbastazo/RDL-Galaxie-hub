@@ -284,7 +284,6 @@ Homepage columns
 
 /* Right column */
 .column.right {
-  margin: 20px 20px 10px;
   width: 18%;
   background-color: #40739e;
   color: white;
@@ -292,7 +291,7 @@ Homepage columns
 
 /* Middle column */
 .column.middle {
-  width: 58%;
+  width: 56%;
 }
 
 /* Clear floats after the columns */
@@ -584,4 +583,8 @@ ID pour personnaliser text
   text-shadow: #281a6f 0.1em 0.1em 0.2em;
   color: white;
   font-size: 1.3em;
+}
+
+#notwhite {
+  color: #8d92d8;
 }

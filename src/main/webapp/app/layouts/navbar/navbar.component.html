@@ -18,12 +18,11 @@
             </li>
 
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="product" (click)="collapseNavbar()">
-                    <fa-icon icon="store"></fa-icon>
-                    <span jhiTranslate="global.menu.boutique">Boutique</span>
+                <a class="nav-link" routerLink="concept" (click)="collapseNavbar()">
+                    <fa-icon icon="meteor" [fixedWidth]="true"></fa-icon>&nbsp;
+                    <span jhiTranslate="global.menu.concept">A propos</span>
                 </a>
             </li>
-
 
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="equipe" (click)="collapseNavbar()">
@@ -33,11 +32,18 @@
             </li>
 
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="concept" (click)="collapseNavbar()">
-                    <fa-icon icon="meteor" [fixedWidth]="true"></fa-icon>&nbsp;
-                    <span jhiTranslate="global.menu.concept">A propos</span>
+                <a class="nav-link" routerLink="product" (click)="collapseNavbar()">
+                    <fa-icon icon="store"></fa-icon>
+                    <span jhiTranslate="global.menu.boutique">Boutique</span>
                 </a>
             </li>
+
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                <a class="nav-link" routerLink="product-order" (click)="collapseNavbar()">
+                                    <fa-icon icon="shopping-basket" fixedWidth="true"></fa-icon>
+                                    <span jhiTranslate="global.menu.cart">Cart</span>
+                                </a>
+                            </li>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
@@ -181,15 +187,19 @@
                     <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
                       <span *ngIf="!getImageUrl()">
                         <fa-icon icon="user"></fa-icon>
-                        <span jhiTranslate="global.menu.account.main">
-                          Account
-                        </span>
+                        <span jhiTranslate="global.menu.account.main">Account</span>
                       </span>
                       <span *ngIf="getImageUrl()">
                           <img [src]="getImageUrl()" class="profile-image rounded-circle" alt="Avatar">
                       </span>
                     </a>
                     <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="account-menu">
+                        <li *ngSwitchCase="true">
+                            <a  class="dropdown-item" routerLink="product-order" (click)="collapseNavbar()">
+                                <fa-icon icon="shopping-basket" fixedWidth="true"></fa-icon>
+                                <span jhiTranslate="global.menu.cart">Cart</span>
+                            </a>
+                        </li>
                         <li *ngSwitchCase="true">
                             <a class="dropdown-item" routerLink="account/settings" routerLinkActive="active" (click)="collapseNavbar()">
                                 <fa-icon icon="wrench" fixedWidth="true"></fa-icon>
