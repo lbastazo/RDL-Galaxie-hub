@@ -17,55 +17,67 @@ import java.util.Optional;
 @Service
 public class OrderItemService {
 
-    private final Logger log = LoggerFactory.getLogger(OrderItemService.class);
+	private final Logger log = LoggerFactory.getLogger(OrderItemService.class);
 
-    private final OrderItemRepository orderItemRepository;
+	private final OrderItemRepository orderItemRepository;
 
-    public OrderItemService(OrderItemRepository orderItemRepository) {
-        this.orderItemRepository = orderItemRepository;
-    }
+	public OrderItemService(OrderItemRepository orderItemRepository) {
+		this.orderItemRepository = orderItemRepository;
+	}
 
-    /**
-     * Save a orderItem.
-     *
-     * @param orderItem the entity to save.
-     * @return the persisted entity.
-     */
-    public OrderItem save(OrderItem orderItem) {
-        log.debug("Request to save OrderItem : {}", orderItem);
-        return orderItemRepository.save(orderItem);
-    }
+	/**
+	 * Save a orderItem.
+	 *
+	 * @param orderItem the entity to save.
+	 * @return the persisted entity.
+	 */
+	public OrderItem save(OrderItem orderItem) {
+		log.debug("Request to save OrderItem : {}", orderItem);
+		return orderItemRepository.save(orderItem);
+	}
 
-    /**
-     * Get all the orderItems.
-     *
-     * @param pageable the pagination information.
-     * @return the list of entities.
-     */
-    public Page<OrderItem> findAll(Pageable pageable) {
-        log.debug("Request to get all OrderItems");
-        return orderItemRepository.findAll(pageable);
-    }
+	/**
+	 * Get all the orderItems.
+	 *
+	 * @param pageable the pagination information.
+	 * @return the list of entities.
+	 */
+	public Page<OrderItem> findAll(Pageable pageable) {
+		log.debug("Request to get all OrderItems");
+		return orderItemRepository.findAll(pageable);
+	}
+	
+	/*    
+	*//**
+		 * Get all the orderItems by the produtOrder.
+		 *
+		 * @param pageable the pagination information.
+		 * @return the list of entities.
+		 *//*
+			 * public List<OrderItem> findAllByOrder(ProductOrder order) {
+			 * log.debug("Request to get all OrderItems having : {}", order); return
+			 * orderItemRepository.findAllByOrder(order); }
+			 * 
+			 */
 
+	/**
+	 * Get one orderItem by id.
+	 *
+	 * @param id the id of the entity.
+	 * @return the entity.
+	 */
+	public Optional<OrderItem> findOne(String id) {
+		log.debug("Request to get OrderItem : {}", id);
+		return orderItemRepository.findById(id);
+	}
 
-    /**
-     * Get one orderItem by id.
-     *
-     * @param id the id of the entity.
-     * @return the entity.
-     */
-    public Optional<OrderItem> findOne(String id) {
-        log.debug("Request to get OrderItem : {}", id);
-        return orderItemRepository.findById(id);
-    }
-
-    /**
-     * Delete the orderItem by id.
-     *
-     * @param id the id of the entity.
-     */
-    public void delete(String id) {
-        log.debug("Request to delete OrderItem : {}", id);
-        orderItemRepository.deleteById(id);
-    }
+	/**
+	 * Delete the orderItem by id.
+	 *
+	 * @param id the id of the entity.
+	 */
+	public void delete(String id) {
+		log.debug("Request to delete OrderItem : {}", id);
+		orderItemRepository.deleteById(id);
+	}
 }

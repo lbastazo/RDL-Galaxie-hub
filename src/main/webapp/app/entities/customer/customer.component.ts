@@ -10,12 +10,14 @@ import { ICustomer } from 'app/shared/model/customer.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { CustomerService } from './customer.service';
 import { CustomerDeleteDialogComponent } from './customer-delete-dialog.component';
+import { AccountService } from 'app/core/auth/account.service';
 
 @Component({
   selector: 'jhi-customer',
   templateUrl: './customer.component.html'
 })
 export class CustomerComponent implements OnInit, OnDestroy {
+  currentAccount: any;
   customers?: ICustomer[];
   eventSubscriber?: Subscription;
   totalItems = 0;
@@ -30,7 +32,8 @@ export class CustomerComponent implements OnInit, OnDestroy {
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager,
-    protected modalService: NgbModal
+    protected modalService: NgbModal,
+    protected accountService: AccountService
   ) {}
 
   loadPage(page?: number): void {
@@ -54,6 +57,9 @@ export class CustomerComponent implements OnInit, OnDestroy {
       this.predicate = data.pagingParams.predicate;
       this.ngbPaginationPage = data.pagingParams.page;
       this.loadPage();
+    });
+    this.accountService.identity().subscribe(account => {
+      this.currentAccount = account;
     });
     this.registerChangeInCustomers();
   }

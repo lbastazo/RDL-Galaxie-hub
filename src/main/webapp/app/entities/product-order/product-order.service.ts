@@ -10,8 +10,12 @@ import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IProductOrder } from 'app/shared/model/product-order.model';
 
+import { IOrderItem } from 'app/shared/model/order-item.model';
+import { IProduct } from 'app/shared/model/product.model';
+
 type EntityResponseType = HttpResponse<IProductOrder>;
 type EntityArrayResponseType = HttpResponse<IProductOrder[]>;
+type EntityResponseType2 = HttpResponse<IOrderItem>;
 
 @Injectable({ providedIn: 'root' })
 export class ProductOrderService {
@@ -71,5 +75,9 @@ export class ProductOrderService {
       });
     }
     return res;
+  }
+
+  ajoutPanier(product: IProduct): Observable<EntityResponseType2> {
+    return this.http.post<IOrderItem>(this.resourceUrl + '/ajout-panier', product, { observe: 'response' });
   }
 }

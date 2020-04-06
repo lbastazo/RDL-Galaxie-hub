@@ -2,6 +2,7 @@ package fr.inti.rdlgalaxie.domain;
 
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
+
 import fr.inti.rdlgalaxie.web.rest.TestUtil;
 
 public class OrderItemTest {
